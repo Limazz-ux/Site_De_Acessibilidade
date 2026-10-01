@@ -1,121 +1,715 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acessibilidade</title>
+
+    <title>Dislexia+ | Acessibilidade e Inclusão</title>
+
+    <meta
+        name="description"
+        content="Informações e recursos de acessibilidade para pessoas com dislexia."
+    >
+
     <link rel="stylesheet" href="./style/style.css">
 </head>
+
 <body>
-    <header id=conteudo>
-        <h1>Dislexia</h1>
-        <p>Olá a Todos!! Nesse site explicaremos um pouco sobre a dislexia.</p>
-    </header>
 
-    <main>
-        <section class="controles" aria-label="Controles de Acessibilidade">
-        <a href="#">Conta</a>
-           <button id="btnAcessibilidade" onclick="abrirPainel()"> Painel de acessibilidade </button> 
-           <!-- Painel lateral --> 
-            <aside id="painelAcessibilidade" aria-label="Painel de acessibilidade"> 
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                <span class="logo-icon">D</span>
+                <span>Dislexia<span class="logo-plus">+</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#recursos">Recursos</a>
+                <a href="#curiosidades">Curiosidades</a>
+
+                <a href="login.php" class="btn-conta">
+                    
+                    Minha conta
+                </a>
+            </div>
+
+            <button
+                class="menu-mobile"
+                aria-label="Abrir menu"
+                onclick="alternarMenu()">
+                ☰
+            </button>
+
+        </nav>
 
 
-     <div class="painel-cabecalho">
+        <!-- HERO -->
 
-    <h2>Acessibilidade</h2>
+        <div class="hero">
 
-    <button 
-        id="fecharPainel"
-        onclick="fecharPainel()"
-        aria-label="Fechar painel">
-        ×
-    </button>
+            <div class="hero-text">
 
-</div>
+                <span class="tag">
+                    ♡ Acessibilidade para todos
+                </span>
 
-        <p>Escolha uma opção:</p><div class="controles"> 
-            <button onclick="aumentarTexto()"> Aumentar texto </button> 
+                <h1>
+                    Um jeito mais
+                    <span>acessível</span>
+                    de aprender.
+                </h1>
 
-            <button onclick="diminuirTexto()"> Diminuir texto </button> 
-            
-            <button onclick="altoContraste()"> Alto contraste </button> 
-            <button onclick="lerPagina()"> Ler Página</button>
-            <button onclick="pararLeitura()">  Parar Leitura</button>
-        </div>
-        </aside>
-        <br><br>
-</section>
-        <section id="conteudo">
+                <p>
+                    Conheça a dislexia, descubra recursos de acessibilidade
+                    e encontre ferramentas que podem tornar a leitura mais
+                    confortável e inclusiva.
+                </p>
 
-            <h2>O Que é Dislexia?</h2>
-            <p>Ela não é uma doença, nem está ligada ao nível de inteligência ou à falta de escolarização.Trata-se de uma condição que afeta a forma como o cérebro processa a linguagem verbal escrita. As principais manifestações incluem:
-                <ul>
-                    <li>Dificuldade no reconhecimento preciso e fluente das palavras.</li>
-                    <li>Desafios na decodificação leitora e na associação entre letras (grafemas) e sons (fonemas).</li>
-                    <li>Impacto na ortografia, na escrita e na compreensão de textos mais longos</li>
-                </ul>
-            </p>
-            <h2>Recursos de Acessibilidade Web Para Pessoas com Dislexia</h2>
-            <p>Para apoiar usuários disléxicos, os sites e aplicativos utilizam diversas ferramentas de tecnologia assistiva na web. Abaixo estão 9 recursos essenciais:
-                <ol>
-                    <li>Fontes Tipográficas Adaptadas (ex: OpenDyslexic)</li>
+                <div class="hero-buttons">
 
-                    <p>Ajuste na tipografia da página para fontes projetadas especificamente para dislexia ou sem serifa (como Arial e Helvetica). A base das letras em fontes como a OpenDyslexic é mais pesada para evitar a sensação visual de troca ou rotação de letras</p>
+                    <a href="#sobre" class="btn-primary">
+                        Conhecer a dislexia
+                    </a>
 
-                    <li> Leitor de Texto por Voz (Text-to-Speech / TTS)</li>
+                    <button
+                        class="btn-secondary"
+                        onclick="abrirPainel()">
+                        ⚙ Acessibilidade
+                    </button>
 
-                    <p>Sistemas que sintetizam a leitura do texto em áudio em tempo real. Esse recurso permite que o usuário acompanhe o conteúdo ou ouça o texto sem precisar fazer o esforço visual de decodificação.</p>
-
-                    <li>Destaque Dinâmico de Texto (Highlighter)</li>
-
-                    <p>Enquanto o áudio lê o texto, a interface ilumina/destaca a palavra ou linha que está sendo reproduzida. Isso ajuda o leitor a manter o foco e acompanhar visualmente o ritmo da leitura.</p>
-
-                    <li> Destaque Dinâmico de Texto (Highlighter)</li>
-
-                    <p>Enquanto o áudio lê o texto, a interface ilumina/destaca a palavra ou linha que está sendo reproduzida. Isso ajuda o leitor a manter o foco e acompanhar visualmente o ritmo da leitura.</p>
-
-                    <li>Controle de Espaçamento e Altura de Linhas</li>
-
-                    <p>Permite ao usuário aumentar o espaço entre as letras (espaçamento entre caracteres), entre palavras e entre as linhas do texto. Isso impede que as frases pareçam "amontoadas".</p>
-
-                    <li>Ajuste de Cores e Contraste Personalizado</li>
-
-                    <P>Muitas pessoas com dislexia sofrem com o estresse visual causado pelo contraste extremo (como fundo branco com texto preto puro). O recurso permite trocar o fundo por tons suaves (bege, creme, azul-claro ou tom sobre tom) para reduzir a fadiga visual.</P>
-
-                    <li>Marcador ou Guia de Leitura (Reading Ruler)</li>
-                    <p>Uma linha escura ou regua virtual sobre o site que segue o cursor do mouse. O marcador esconde as linhas superiores e inferiores, isolando apenas a frase que está sendo lida no momento para evitar distrações.</p>
-                    <li>Dicionário Visual e Sinônimos em Hover</li>
-                    Recurso de apoio léxico onde, ao passar o cursor ou clicar sobre palavras complexas, o site exibe um significado simplificado, uma ilustração ou a separação silábica da palavra.
-                    <li>Otimização de Layout para Leitura (Modo Leitura)</li>
-                    <p>Função que remove barras laterais, pop-ups, anúncios e elementos visuais poluídos. Ela reestrutura a página para exibir apenas o texto centralizado e imagens essenciais.</p>
-                    <li>9 Corretor Ortográfico Inteligente com Dica Contextual</li>
-                    <p>Para sites que possuem áreas de escrita (como fóruns ou formulários), corretores focados em dislexia sugerem substituições com base na fonética da palavra escrita incorretamente (em vez de apenas na semelhança tipográfica).</p>
-                </ol>
-            </p>
-        </section>
-           <br><br><br>
-        <section id="conteudo">
-           <h2>Curiosidades</h2>
-            <div class="box">
-
-                <div class="box_1">
-                    <img src="https://tse3.mm.bing.net/th/id/OIP.6shy1qCBZ2MS0BaPAXW0fgHaE_?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="img1" width="300px">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt assumenda suscipit et modi atque facilis at vero expedita omnis. Facilis quo consectetur excepturi consequuntur fugit vel amet officiis laudantium cupiditate.</p>
-                </div>
-
-                <div class="box_2">
-                    <img src="https://media.istockphoto.com/id/1414304684/photo/elementary-school.jpg?s=612x612&w=0&k=20&c=Q_2lHs2S1Fvg901FALgtf_YZTkBpCKWl0BhiDBW9MKY=" alt="img2" width="300px">
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt assumenda suscipit et modi atque facilis at vero expedita omnis. Facilis quo consectetur excepturi consequuntur fugit vel amet officiis laudantium cupiditate.</p>
-                </div>
-                
-                <div class="box_3">
-                    <img src="https://i.pinimg.com/736x/75/c0/88/75c088a7411439d7464711c265300f63.jpg" alt="img3" width="300px">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt assumenda suscipit et modi atque facilis at vero expedita omnis. Facilis quo consectetur excepturi consequuntur fugit vel amet officiis laudantium cupiditate.</p>
                 </div>
 
             </div>
+
+
+            <div class="hero-card">
+
+                <div class="hero-card-icon">
+                    Aa
+                </div>
+
+                <h3>
+                    A leitura pode ser diferente.
+                </h3>
+
+                <p>
+                    Isso não significa que a capacidade de aprender seja
+                    diferente.
+                </p>
+
+                <div class="hero-card-footer">
+                    <span>♧</span>
+                    Inclusão • Educação • Acessibilidade
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PAINEL ================= -->
+
+    <aside
+        id="painelAcessibilidade"
+        class="painel-acessibilidade"
+        aria-label="Painel de acessibilidade">
+
+        <div class="painel-cabecalho">
+
+            <div>
+                <span class="painel-tag">ACESSIBILIDADE</span>
+                <h2>Personalize sua leitura</h2>
+            </div>
+
+            <button
+                id="fecharPainel"
+                onclick="fecharPainel()"
+                aria-label="Fechar painel">
+                ×
+            </button>
+
+        </div>
+
+
+        <p class="painel-descricao">
+            Escolha as opções que deixam a leitura mais confortável para você.
+        </p>
+
+
+        <div class="acessibilidade-grupo">
+
+            <h3>Texto</h3>
+
+            <button onclick="aumentarTexto()">
+                <span>🔎</span>
+                Aumentar texto
+            </button>
+
+            <button onclick="diminuirTexto()">
+                <span>🔍</span>
+                Diminuir texto
+            </button>
+
+            <button onclick="alternarEspacamento()">
+                <span>↔</span>
+                Espaçamento entre letras
+            </button>
+
+            <button onclick="alternarLinhas()">
+                <span>☷</span>
+                Aumentar espaço entre linhas
+            </button>
+
+        </div>
+
+
+        <div class="acessibilidade-grupo">
+
+            <h3>Visual</h3>
+
+            <button onclick="altoContraste()">
+                <span>◐</span>
+                Alto contraste
+            </button>
+
+            <button onclick="modoCreme()">
+                <span>◯</span>
+                Fundo confortável
+            </button>
+
+            <button onclick="alternarFonte()">
+                <span>Aa</span>
+                Fonte para dislexia
+            </button>
+
+            <button onclick="alternarGuia()">
+                <span>━</span>
+                Guia de leitura
+            </button>
+
+        </div>
+
+
+        <div class="acessibilidade-grupo">
+
+            <h3>Leitura</h3>
+
+            <button onclick="lerPagina()">
+                <span>🔊</span>
+                Ler página
+            </button>
+
+            <button onclick="pararLeitura()">
+                <span>■</span>
+                Parar leitura
+            </button>
+
+        </div>
+
+
+        <button
+            class="btn-reset"
+            onclick="resetarAcessibilidade()">
+            ↻ Restaurar configurações
+        </button>
+
+    </aside>
+
+
+    <!-- BOTÃO FLUTUANTE -->
+
+    <button
+        id="btnAcessibilidade"
+        onclick="abrirPainel()"
+        aria-label="Abrir painel de acessibilidade">
+
+        ⚙
+        <span>Acessibilidade</span>
+
+    </button>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main id="conteudo">
+
+
+        <!-- SOBRE -->
+
+        <section id="sobre" class="section">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    ENTENDA
+                </span>
+
+                <h2>
+                    O que é <span>dislexia?</span>
+                </h2>
+
+                <p>
+                    A dislexia é uma condição relacionada à forma como o
+                    cérebro processa a linguagem escrita. Ela não está
+                    relacionada à inteligência ou à falta de escolarização.
+                </p>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <article class="info-card">
+
+                    <div class="card-icon blue">
+                        Aa
+                    </div>
+
+                    <h3>Processamento da linguagem</h3>
+
+                    <p>
+                        Pode haver dificuldade na associação entre letras,
+                        sons e palavras durante a leitura.
+                    </p>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <div class="card-icon purple">
+                        ✓
+                    </div>
+
+                    <h3>Aprendizagem diferente</h3>
+
+                    <p>
+                        Pessoas com dislexia podem desenvolver estratégias
+                        próprias para aprender e compreender conteúdos.
+                    </p>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <div class="card-icon green">
+                        ♡
+                    </div>
+
+                    <h3>Não define a inteligência</h3>
+
+                    <p>
+                        A dislexia não determina a capacidade intelectual
+                        de uma pessoa.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="destaque">
+
+                <div class="destaque-icon">
+                    !
+                </div>
+
+                <div>
+                    <h3>Importante lembrar</h3>
+
+                    <p>
+                        Cada pessoa pode experimentar a dislexia de uma
+                        maneira diferente. Recursos de acessibilidade podem
+                        ajudar a tornar a leitura mais confortável.
+                    </p>
+                </div>
+
+            </div>
+
         </section>
+
+
+        <!-- RECURSOS -->
+
+        <section id="recursos" class="section section-recursos">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    ACESSIBILIDADE
+                </span>
+
+                <h2>
+                    Recursos que podem
+                    <span>ajudar na leitura</span>
+                </h2>
+
+                <p>
+                    Existem diversas ferramentas que podem tornar conteúdos
+                    digitais mais acessíveis.
+                </p>
+
+            </div>
+
+
+            <div class="recursos-grid">
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        01
+                    </div>
+
+                    <div class="recurso-icon">
+                        Aa
+                    </div>
+
+                    <h3>Fontes adaptadas</h3>
+
+                    <p>
+                        Fontes sem serifa e fontes desenvolvidas para
+                        acessibilidade podem facilitar a leitura para algumas
+                        pessoas.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        02
+                    </div>
+
+                    <div class="recurso-icon">
+                        🔊
+                    </div>
+
+                    <h3>Texto para voz</h3>
+
+                    <p>
+                        Permite ouvir o conteúdo em vez de depender somente
+                        da leitura visual.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        03
+                    </div>
+
+                    <div class="recurso-icon">
+                        ↔
+                    </div>
+
+                    <h3>Espaçamento</h3>
+
+                    <p>
+                        Ajustar o espaçamento entre letras, palavras e linhas
+                        pode deixar o texto visualmente mais organizado.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        04
+                    </div>
+
+                    <div class="recurso-icon">
+                        ◐
+                    </div>
+
+                    <h3>Cores confortáveis</h3>
+
+                    <p>
+                        Diferentes combinações de cores e contraste podem
+                        proporcionar uma experiência visual mais confortável.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        05
+                    </div>
+
+                    <div class="recurso-icon">
+                        ━
+                    </div>
+
+                    <h3>Guia de leitura</h3>
+
+                    <p>
+                        Uma linha de acompanhamento pode ajudar a manter
+                        o foco durante a leitura.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        06
+                    </div>
+
+                    <div class="recurso-icon">
+                        ✓
+                    </div>
+
+                    <h3>Modo de leitura</h3>
+
+                    <p>
+                        Interfaces mais limpas, com menos distrações,
+                        podem facilitar a concentração.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        07
+                    </div>
+
+                    <div class="recurso-icon">
+                        📖
+                    </div>
+
+                    <h3>Glossário visual</h3>
+
+                    <p>
+                        Explicações simples, exemplos e elementos visuais
+                        podem auxiliar na compreensão de palavras.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        08
+                    </div>
+
+                    <div class="recurso-icon">
+                        ✎
+                    </div>
+
+                    <h3>Corretor inteligente</h3>
+
+                    <p>
+                        Ferramentas de escrita podem ajudar a identificar
+                        erros ortográficos e sugerir correções.
+                    </p>
+
+                </article>
+
+
+                <article class="recurso-card">
+
+                    <div class="recurso-number">
+                        09
+                    </div>
+
+                    <div class="recurso-icon">
+                        🧠
+                    </div>
+
+                    <h3>Personalização</h3>
+
+                    <p>
+                        Cada usuário pode precisar de uma combinação
+                        diferente de recursos de acessibilidade.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CURIOSIDADES -->
+
+        <section id="curiosidades" class="section">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    VOCÊ SABIA?
+                </span>
+
+                <h2>
+                    Curiosidades sobre
+                    <span>dislexia</span>
+                </h2>
+
+            </div>
+
+
+            <div class="curiosidades-grid">
+
+                <article class="curiosidade-card">
+
+                    <div class="curiosidade-imagem imagem-1">
+                        <span>01</span>
+                    </div>
+
+                    <div class="curiosidade-conteudo">
+
+                        <h3>Formas diferentes de aprender</h3>
+
+                        <p>
+                            Pessoas podem apresentar diferentes formas
+                            de perceber e processar informações escritas.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="curiosidade-card">
+
+                    <div class="curiosidade-imagem imagem-2">
+                        <span>02</span>
+                    </div>
+
+                    <div class="curiosidade-conteudo">
+
+                        <h3>Acessibilidade digital</h3>
+
+                        <p>
+                            Recursos digitais podem oferecer alternativas
+                            para tornar o acesso à informação mais inclusivo.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="curiosidade-card">
+
+                    <div class="curiosidade-imagem imagem-3">
+                        <span>03</span>
+                    </div>
+
+                    <div class="curiosidade-conteudo">
+
+                        <h3>Personalização importa</h3>
+
+                        <p>
+                            Nem todo recurso funciona da mesma maneira
+                            para todas as pessoas.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="cta">
+
+            <div>
+
+                <span class="section-tag">
+                    DISLEXIA+
+                </span>
+
+                <h2>
+                    Acessibilidade começa
+                    com compreensão.
+                </h2>
+
+                <p>
+                    Explore os recursos disponíveis e personalize sua
+                    experiência de leitura.
+                </p>
+
+            </div>
+
+            <button
+                onclick="abrirPainel()"
+                class="btn-primary btn-cta">
+                Personalizar leitura →
+            </button>
+
+        </section>
+
     </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <a href="index.html" class="logo footer-logo">
+                    <span class="logo-icon">D</span>
+                    <span>Dislexia<span class="logo-plus">+</span></span>
+                </a>
+
+                <p>
+                    Informação, inclusão e acessibilidade.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="#sobre">Sobre</a>
+                <a href="#recursos">Recursos</a>
+                <a href="#curiosidades">Curiosidades</a>
+                <a href="login.php">Minha conta</a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Dislexia+ • Projeto de acessibilidade
+        </div>
+
+    </footer>
+
+
+    <!-- GUIA DE LEITURA -->
+
+    <div id="guiaLeitura"></div>
+
+
     <script src="./js/script.js"></script>
+
 </body>
+
 </html>
