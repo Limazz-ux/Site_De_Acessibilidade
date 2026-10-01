@@ -1,20 +1,27 @@
-let tamanhoGrande = false;
+function abrirPainel() {
+    const painel = document.getElementById("painelAcessibilidade");
+    const botao = document.getElementById("btnAcessibilidade");
 
-function aumentarTexto() {
-    document.body.classList.add("texto-grande");
-    tamanhoGrande = true;
+    painel.classList.add("aberto");
+    botao.style.display = "none";
 }
 
-function diminuirTexto() {
-    document.body.classList.remove("texto-grande");
-    tamanhoGrande = false;
+
+function fecharPainel() {
+    const painel = document.getElementById("painelAcessibilidade");
+    const botao = document.getElementById("btnAcessibilidade");
+
+    painel.classList.remove("aberto");
+    botao.style.display = "block";
 }
 
-function altoContraste() {
-    document.body.classList.toggle("contraste");
-}
+     function aumentarTexto() 
+     { document.body.classList.add("texto-grande"); 
 
-const leitura = new SpeechSynthesisUtterance(texto);
+     }  function diminuirTexto() { document.body.classList.remove("texto-grande");
+     }
+      function altoContraste() { document.body.classList.toggle("contraste"); 
+      } 
 
 function lerPagina() {
     speechSynthesis.cancel();
@@ -24,14 +31,11 @@ function lerPagina() {
     const leitura = new SpeechSynthesisUtterance(texto);
 
     leitura.lang = "jpn";
-
-
     leitura.rate = 0.8;
 
     speechSynthesis.speak(leitura);
 }
 
 function pararLeitura() {
-
     speechSynthesis.cancel();
 }

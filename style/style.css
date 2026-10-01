@@ -1,4 +1,8 @@
-/* Ao pressionar o botão, irá aumentar as letras da página*/
+.box {
+    flex-direction:row;
+    display: flex;
+    justify-content: center;
+}
 body.texto-grande {
     font-size: 24px;
 }
@@ -34,6 +38,312 @@ body.texto-grande button {
     background: yellow;
     color: black;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+header {
+    background: linear-gradient(135deg, #0057b8, #0078d4);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+header p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 35px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    margin: 0 450px 0 450px;
+}
+
+.controles button {
+    border: none;
+    border-radius: 10px;
+    padding: 14px 20px;
+    background-color: #0057b8;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.controles button:hover {
+    background-color: #003f88;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+#conteudo {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+#conteudo h2 {
+    color: #0057b8;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+#conteudo p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+/* ===================================
+   BOTÃO PAINEL DE ACESSIBILIDADE
+   =================================== */
+
+#btnAcessibilidade {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    z-index: 1001;
+
+    padding: 14px 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #0057b8;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#btnAcessibilidade:hover {
+    background-color: #003f88;
+}
+
+
+/* ===================================
+   PAINEL LATERAL
+   =================================== */
+
+#painelAcessibilidade {
+    position: fixed;
+
+    top: 0;
+    right: -380px;
+
+    width: 350px;
+    height: 100vh;
+
+    padding: 30px;
+
+    background-color: white;
+
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.25);
+
+    z-index: 1000;
+
+    transition: right 0.3s ease;
+
+    overflow-y: auto;
+}
+
+
+/* Painel aberto */
+
+#painelAcessibilidade.aberto {
+    right: 0;
+}
+
+
+/* ===================================
+   CABEÇALHO DO PAINEL
+   =================================== */
+
+.painel-cabecalho {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.painel-cabecalho h2 {
+    margin: 0;
+
+    color: #0057b8;
+
+    font-size: 26px;
+}
+
+
+/* ===================================
+   BOTÃO FECHAR
+   =================================== */
+
+#fecharPainel {
+    border: none;
+
+    background: transparent;
+
+    color: #222;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 0 8px;
+}
+
+#fecharPainel:hover {
+    color: #0057b8;
+}
+
+
+/* ===================================
+   TEXTO DO PAINEL
+   =================================== */
+
+#painelAcessibilidade > p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+/* ===================================
+   BOTÕES DE ACESSIBILIDADE
+   =================================== */
+
+#painelAcessibilidade .controles {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+}
+
+#painelAcessibilidade .controles button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #0057b8;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#painelAcessibilidade .controles button:hover {
+    background-color: #003f88;
+}
+
+
+/* ===================================
+   CONTRASTE
+   =================================== */
+
+.contraste #painelAcessibilidade {
+    background-color: black;
+
+    color: white;
+}
+
+.contraste #painelAcessibilidade .painel-cabecalho h2 {
+    color: yellow;
+}
+
+.contraste #fecharPainel {
+    color: white;
+}
+
+.contraste #painelAcessibilidade .controles button {
+    background-color: yellow;
+    color: black;
+}
+
+
+/* ===================================
+   CELULAR
+   =================================== */
+
+@media (max-width: 600px) {
+
+    #painelAcessibilidade {
+        width: 320px;
+
+        right: -350px;
+
+        padding: 20px;
+    }
+
+    #btnAcessibilidade {
+        top: 10px;
+        right: 10px;
+
+        font-size: 14px;
+
+        padding: 12px 15px;
+    }
+}
+
+/* ========================= CELULAR ========================= */ @media (max-width: 600px) { #painelAcessibilidade { width: 85%; right: -85%; } #btnAcessibilidade { right: 10px; top: 10px; font-size: 14px; padding: 12px 15px; } }
 
 * {
     margin: 0;
