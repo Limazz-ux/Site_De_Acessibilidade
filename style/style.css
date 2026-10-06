@@ -1,10 +1,8 @@
-/* =========================================
-   RESET
-========================================= */
+/* ==============================
+   GERAL
+============================== */
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -13,1238 +11,441 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f6f8fc;
-    color: #202b3c;
-    line-height: 1.7;
+    margin: 0;
 
-    transition:
-        background-color .3s ease,
-        color .3s ease;
-}
+    font-family: Arial, sans-serif;
 
-button,
-a {
-    font-family: inherit;
-}
+    color: #263238;
 
-button {
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
+    background: white;
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* ==============================
+   MENU
+============================== */
 
-.header {
-    background:
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(255,255,255,.18),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #0757b8,
-            #1976d2
-        );
-
-    color: white;
-    min-height: 680px;
-}
-
-
-/* =========================================
-   NAVBAR
-========================================= */
-
-.navbar {
-    max-width: 1180px;
-    margin: auto;
-
-    padding: 24px 30px;
-
+header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 10%;
+
+    background: white;
 }
 
 .logo {
+    color: #1976d2;
+}
+
+nav a {
+    margin-left: 25px;
+
+    color: #333;
+
+    text-decoration: none;
+}
+
+
+/* ==============================
+   INÍCIO
+============================== */
+
+.inicio {
+    min-height: 550px;
+
     display: flex;
     align-items: center;
-    gap: 10px;
 
-    font-size: 23px;
-    font-weight: 800;
+    padding: 80px 10%;
+
+    background: #eef7ff;
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-
-    display: grid;
-    place-items: center;
-
-    background: white;
-    color: #0757b8;
-
-    border-radius: 12px;
-
-    font-weight: 900;
-}
-
-.logo-plus {
-    color: #80d8ff;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.nav-links > a:not(.btn-conta) {
-    opacity: .9;
-    font-size: 15px;
-    transition: .2s;
-}
-
-.nav-links > a:not(.btn-conta):hover {
-    opacity: 1;
-    transform: translateY(-1px);
-}
-
-.btn-conta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    background: white;
-    color: #0757b8;
-
-    padding: 11px 18px;
-
-    border-radius: 10px;
-
-    font-weight: 700;
-
-    transition: .2s;
-}
-
-.btn-conta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
-}
-
-.menu-mobile {
-    display: none;
-
-    border: 0;
-    background: transparent;
-    color: white;
-
-    font-size: 26px;
-}
-
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero {
-    max-width: 1180px;
-    margin: auto;
-
-    min-height: 570px;
-
-    padding: 70px 30px 100px;
-
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-
-    align-items: center;
-
-    gap: 80px;
-}
-
-.tag,
-.section-tag {
-    display: inline-block;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: 1.4px;
-
-    text-transform: uppercase;
+.inicio div {
+    max-width: 700px;
 }
 
 .tag {
-    padding: 8px 14px;
+    color: #1976d2;
 
-    background: rgba(255,255,255,.13);
-
-    border: 1px solid rgba(255,255,255,.2);
-
-    border-radius: 100px;
-
-    margin-bottom: 20px;
+    font-weight: bold;
 }
 
-.hero h1 {
-    max-width: 700px;
+.inicio h1 {
+    font-size: 55px;
 
-    font-size: clamp(42px, 6vw, 70px);
+    line-height: 1.1;
 
-    line-height: 1.08;
-
-    letter-spacing: -2px;
-
-    margin-bottom: 25px;
+    color: #17324d;
 }
 
-.hero h1 span {
-    color: #9be7ff;
+.inicio h1 strong {
+    color: #1976d2;
 }
 
-.hero-text > p {
-    max-width: 620px;
-
-    color: rgba(255,255,255,.88);
-
+.inicio p {
     font-size: 18px;
 
-    margin-bottom: 35px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-}
-
-.btn-primary,
-.btn-secondary {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 50px;
-
-    padding: 0 22px;
-
-    border-radius: 11px;
-
-    font-weight: 700;
-
-    transition: .25s;
-}
-
-.btn-primary {
-    border: 0;
-
-    background: white;
-    color: #0757b8;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.18);
-}
-
-.btn-secondary {
-    border: 1px solid rgba(255,255,255,.35);
-
-    background: rgba(255,255,255,.08);
-
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: rgba(255,255,255,.16);
+    line-height: 1.7;
 }
 
 
-/* =========================================
-   HERO CARD
-========================================= */
+/* BOTÕES */
 
-.hero-card {
-    position: relative;
+.inicio button,
+.informacao button {
+    padding: 15px 25px;
 
-    padding: 40px;
+    margin-top: 20px;
 
-    background: rgba(255,255,255,.11);
-
-    border: 1px solid rgba(255,255,255,.2);
-
-    border-radius: 28px;
-
-    backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.15);
-}
-
-.hero-card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 100px;
-    height: 100px;
-
-    background: rgba(120,220,255,.15);
-
-    border-radius: 50%;
-
-    right: -30px;
-    top: -30px;
-}
-
-.hero-card-icon {
-    width: 72px;
-    height: 72px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 20px;
-
-    background: white;
-    color: #0757b8;
-
-    font-size: 25px;
-    font-weight: 800;
-
-    margin-bottom: 30px;
-}
-
-.hero-card h3 {
-    font-size: 30px;
-    line-height: 1.25;
-
-    margin-bottom: 15px;
-}
-
-.hero-card p {
-    color: rgba(255,255,255,.82);
-
-    font-size: 17px;
-}
-
-.hero-card-footer {
-    margin-top: 35px;
-    padding-top: 20px;
-
-    border-top: 1px solid rgba(255,255,255,.2);
-
-    font-size: 13px;
-
-    color: rgba(255,255,255,.75);
-}
-
-
-/* =========================================
-   MAIN
-========================================= */
-
-main {
-    max-width: 1180px;
-
-    margin: auto;
-}
-
-.section {
-    padding: 100px 30px;
-}
-
-.section-heading {
-    max-width: 720px;
-
-    margin-bottom: 55px;
-}
-
-.section-tag {
-    color: #0876d1;
-
-    margin-bottom: 10px;
-}
-
-.section-heading h2 {
-    font-size: clamp(34px, 5vw, 48px);
-
-    line-height: 1.15;
-
-    letter-spacing: -1px;
-
-    margin-bottom: 18px;
-}
-
-.section-heading h2 span {
-    color: #0876d1;
-}
-
-.section-heading p {
-    color: #667085;
-
-    font-size: 17px;
-}
-
-
-/* =========================================
-   INFO CARDS
-========================================= */
-
-.info-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.info-card {
-    background: white;
-
-    padding: 30px;
-
-    border: 1px solid #e8edf4;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 8px 30px rgba(31,52,73,.06);
-
-    transition: .25s;
-}
-
-.info-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px rgba(31,52,73,.1);
-}
-
-.card-icon {
-    width: 52px;
-    height: 52px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 14px;
-
-    font-weight: 800;
-
-    margin-bottom: 22px;
-}
-
-.card-icon.blue {
-    background: #e5f3ff;
-    color: #0876d1;
-}
-
-.card-icon.purple {
-    background: #f0eaff;
-    color: #7655d6;
-}
-
-.card-icon.green {
-    background: #e5f8ef;
-    color: #16875a;
-}
-
-.info-card h3 {
-    margin-bottom: 10px;
-
-    font-size: 20px;
-}
-
-.info-card p {
-    color: #667085;
-}
-
-
-/* =========================================
-   DESTAQUE
-========================================= */
-
-.destaque {
-    display: flex;
-    gap: 20px;
-
-    margin-top: 25px;
-
-    padding: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #edf7ff,
-            #f6f3ff
-        );
-
-    border: 1px solid #dcecff;
-
-    border-radius: 20px;
-}
-
-.destaque-icon {
-    min-width: 45px;
-    height: 45px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    background: #0876d1;
-    color: white;
-
-    font-weight: 900;
-}
-
-.destaque h3 {
-    margin-bottom: 5px;
-}
-
-.destaque p {
-    color: #667085;
-}
-
-
-/* =========================================
-   RECURSOS
-========================================= */
-
-.section-recursos {
-    background: #f0f5fa;
-
-    max-width: none;
-
-    margin-left: calc((1180px - 100vw) / 2);
-    margin-right: calc((1180px - 100vw) / 2);
-
-    padding-left: max(30px, calc((100vw - 1180px) / 2 + 30px));
-    padding-right: max(30px, calc((100vw - 1180px) / 2 + 30px));
-}
-
-.recursos-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.recurso-card {
-    position: relative;
-
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 20px;
-
-    border: 1px solid #e5eaf0;
-
-    min-height: 270px;
-
-    overflow: hidden;
-
-    transition: .25s;
-}
-
-.recurso-card:hover {
-    transform: translateY(-5px);
-
-    border-color: #b9d9f5;
-}
-
-.recurso-number {
-    position: absolute;
-
-    right: 25px;
-    top: 20px;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    color: #b5c1ce;
-}
-
-.recurso-icon {
-    width: 55px;
-    height: 55px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 15px;
-
-    background: #eaf5ff;
-    color: #0876d1;
-
-    font-size: 21px;
-    font-weight: 800;
-
-    margin-bottom: 25px;
-}
-
-.recurso-card h3 {
-    margin-bottom: 10px;
-
-    font-size: 20px;
-}
-
-.recurso-card p {
-    color: #667085;
-}
-
-
-/* =========================================
-   CURIOSIDADES
-========================================= */
-
-.curiosidades-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.curiosidade-card {
-    background: white;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    border: 1px solid #e8edf4;
-
-    box-shadow:
-        0 8px 30px rgba(31,52,73,.06);
-}
-
-.curiosidade-imagem {
-    height: 190px;
-
-    position: relative;
-
-    display: flex;
-    align-items: flex-end;
-
-    padding: 20px;
-}
-
-.curiosidade-imagem span {
-    padding: 6px 10px;
-
-    background: rgba(255,255,255,.9);
-
-    color: #0757b8;
-
+    border: none;
     border-radius: 8px;
 
-    font-weight: 800;
+    background: #1976d2;
 
-    font-size: 13px;
+    color: white;
+
+    cursor: pointer;
 }
 
-.imagem-1 {
-    background:
-        linear-gradient(
-            135deg,
-            #0876d1,
-            #78c7ff
-        );
+
+/* ==============================
+   SEÇÕES
+============================== */
+
+section {
+    padding: 80px 10%;
 }
 
-.imagem-2 {
-    background:
-        linear-gradient(
-            135deg,
-            #6b54cf,
-            #c6b7ff
-        );
+section > p {
+    max-width: 700px;
+
+    line-height: 1.8;
 }
 
-.imagem-3 {
-    background:
-        linear-gradient(
-            135deg,
-            #12845a,
-            #8bd9b6
-        );
+
+/* ==============================
+   CARDS
+============================== */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 40px;
 }
 
-.curiosidade-conteudo {
+.card {
     padding: 25px;
+
+    background: #f4f9fd;
+
+    border: 1px solid #e1ebf3;
+
+    border-radius: 12px;
 }
 
-.curiosidade-conteudo h3 {
-    margin-bottom: 10px;
-}
-
-.curiosidade-conteudo p {
-    color: #667085;
-}
-
-
-/* =========================================
-   CTA
-========================================= */
-
-.cta {
-    margin: 30px;
-
-    padding: 55px;
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #0757b8,
-            #258de0
-        );
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-.cta .section-tag {
-    color: #9be7ff;
-}
-
-.cta h2 {
-    font-size: 38px;
-
-    line-height: 1.2;
-
-    margin: 10px 0;
-}
-
-.cta p {
-    color: rgba(255,255,255,.8);
-}
-
-.btn-cta {
-    flex-shrink: 0;
+.card h3 {
+    color: #1976d2;
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
+/* ==============================
+   INFORMAÇÃO
+============================== */
 
-footer {
-    background: #142235;
+.informacao {
+    text-align: center;
 
-    color: white;
-
-    padding: 55px 30px 20px;
+    background: #eef7ff;
 }
 
-.footer-content {
-    max-width: 1180px;
-
+.informacao p {
     margin: auto;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-.footer-logo {
-    margin-bottom: 15px;
-}
-
-.footer-content p {
-    color: #aab5c3;
-}
-
-.footer-links {
-    display: flex;
-
-    gap: 25px;
-
-    color: #aab5c3;
-}
-
-.footer-links a:hover {
-    color: white;
-}
-
-.footer-bottom {
-    max-width: 1180px;
-
-    margin: 40px auto 0;
-
-    padding-top: 20px;
-
-    border-top: 1px solid #2c3b4d;
-
-    color: #8491a0;
-
-    font-size: 13px;
 }
 
 
-/* =========================================
-   BOTÃO ACESSIBILIDADE
-========================================= */
-
-#btnAcessibilidade {
-    position: fixed;
-
-    right: 25px;
-    bottom: 25px;
-
-    z-index: 999;
-
-    border: 0;
-
-    background: #0757b8;
-
-    color: white;
-
-    padding: 14px 19px;
-
-    border-radius: 50px;
-
-    font-weight: 700;
-
-    box-shadow:
-        0 8px 25px rgba(7,87,184,.35);
-
-    transition: .25s;
-}
-
-#btnAcessibilidade:hover {
-    transform: translateY(-3px);
-
-    background: #064996;
-}
-
-
-/* =========================================
+/* ==============================
    PAINEL
-========================================= */
+============================== */
 
-.painel-acessibilidade {
+#painel {
     position: fixed;
 
     top: 0;
-    right: -420px;
+    right: 0;
 
-    width: 390px;
+    width: 350px;
     height: 100vh;
 
-    z-index: 2000;
-
     padding: 30px;
-
-    overflow-y: auto;
 
     background: white;
 
     box-shadow:
-        -15px 0 50px rgba(0,0,0,.2);
+        -5px 0 20px #999;
 
-    transition: right .35s ease;
+    z-index: 1000;
 }
 
-.painel-acessibilidade.aberto {
-    right: 0;
+
+/* TÍTULO */
+
+#painel h2 {
+    color: #1976d2;
+
+    font-size: 28px;
 }
 
-.painel-cabecalho {
-    display: flex;
 
-    justify-content: space-between;
+/* TEXTO */
 
-    align-items: flex-start;
-
-    gap: 20px;
-
-    margin-bottom: 20px;
-}
-
-.painel-tag {
-    color: #0876d1;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-}
-
-.painel-cabecalho h2 {
-    margin-top: 5px;
-
-    font-size: 25px;
-
-    line-height: 1.2;
-}
-
-#fecharPainel {
-    border: 0;
-
-    background: #f0f3f7;
-
-    color: #273548;
-
-    width: 38px;
-    height: 38px;
-
-    border-radius: 10px;
-
-    font-size: 25px;
-}
-
-.painel-descricao {
-    color: #667085;
-
-    font-size: 14px;
+#painel > p {
+    color: #666;
 
     margin-bottom: 25px;
 }
 
-.acessibilidade-grupo {
-    padding: 20px 0;
 
-    border-top: 1px solid #e8edf2;
-}
+/* BOTÕES */
 
-.acessibilidade-grupo h3 {
-    font-size: 14px;
-
-    margin-bottom: 12px;
-
-    color: #667085;
-}
-
-.acessibilidade-grupo button {
+#painel button {
     width: 100%;
 
-    display: flex;
+    padding: 12px;
 
-    align-items: center;
+    margin-bottom: 8px;
 
-    gap: 12px;
+    border: none;
+    border-radius: 7px;
 
-    padding: 13px;
+    background: #f1f6fa;
 
-    margin-bottom: 9px;
-
-    border: 1px solid #e1e7ee;
-
-    background: white;
-
-    border-radius: 10px;
-
-    color: #273548;
-
-    font-weight: 600;
+    cursor: pointer;
 
     text-align: left;
-
-    transition: .2s;
 }
 
-.acessibilidade-grupo button:hover {
-    border-color: #0876d1;
 
-    background: #f2f8ff;
+/* PASSAR MOUSE */
+
+#painel button:hover {
+    background: #dcefff;
 }
 
-.acessibilidade-grupo button span {
-    width: 30px;
+
+/* ==============================
+   BOTÃO FECHAR
+============================== */
+
+#painel .fechar {
+    width: 45px;
+
+    float: right;
+
+    background: #1976d2;
+
+    color: white;
 
     text-align: center;
-
-    font-weight: 800;
-
-    color: #0876d1;
-}
-
-.btn-reset {
-    width: 100%;
-
-    border: 0;
-
-    background: #eef2f6;
-
-    color: #425166;
-
-    padding: 14px;
-
-    border-radius: 10px;
-
-    font-weight: 700;
-
-    margin-top: 10px;
 }
 
 
-/* =========================================
-   ACESSIBILIDADE — ESTADOS
-========================================= */
+/* ==============================
+   PARAR
+============================== */
 
-body.texto-grande {
-    font-size: 20px;
+#painel .parar {
+    color: #c62828;
 }
 
-body.texto-grande h1 {
-    font-size: 76px;
+
+/* ==============================
+   RESTAURAR
+============================== */
+
+#painel .resetar {
+    margin-top: 15px;
+
+    background: #1976d2;
+
+    color: white;
+
+    text-align: center;
 }
 
-body.texto-grande h2 {
-    font-size: 52px;
+
+/* ==============================
+   VOLTAR
+============================== */
+
+.voltar {
+    position: fixed;
+
+    top: 25px;
+    left: 30px;
+
+    padding: 12px 20px;
+
+    background: #1976d2;
+
+    color: white;
+
+    border-radius: 8px;
+
+    text-decoration: none;
 }
 
-body.texto-grande p {
-    font-size: 20px;
+
+/* ==============================
+   TESTE DO PAINEL
+============================== */
+
+.teste {
+    max-width: 700px;
+
+    padding: 100px 8%;
 }
 
-body.espacamento {
-    letter-spacing: .08em;
-    word-spacing: .12em;
+.teste h1 {
+    font-size: 40px;
+
+    color: #17324d;
 }
 
-body.linhas {
-    line-height: 2.1;
+
+/* ==============================
+   ACESSIBILIDADE
+============================== */
+
+
+/* 3. ESPAÇAMENTO DAS LETRAS */
+
+.letras #conteudo {
+    letter-spacing: 3px;
 }
 
-body.fonte-dislexia {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
 
-    letter-spacing: .02em;
+/* 4. ESPAÇAMENTO DAS LINHAS */
+
+.linhas #conteudo {
+    line-height: 2.5;
 }
 
-body.fundo-creme {
-    background: #fff9ec;
+
+/* 5. FONTE */
+
+.fonte #conteudo {
+    font-family: Verdana, Arial, sans-serif;
 }
 
-body.contraste {
-    background: #000;
-    color: #fff;
+
+/* 6. FUNDO CONFORTÁVEL */
+
+.creme {
+    background: #fff4d6;
 }
 
-body.contraste .info-card,
-body.contraste .recurso-card,
-body.contraste .curiosidade-card {
-    background: #111;
+.creme header,
+.creme section {
+    background: #fff4d6;
+}
 
-    border-color: #fff;
+
+/* 7. ALTO CONTRASTE */
+
+.contraste {
+    background: black;
 
     color: white;
 }
 
-body.contraste p {
-    color: #fff;
-}
-
-body.contraste .section-recursos {
-    background: #000;
-}
-
-body.contraste .section-heading p,
-body.contraste .recurso-card p,
-body.contraste .info-card p,
-body.contraste .curiosidade-conteudo p {
-    color: #fff;
-}
-
-body.contraste .painel-acessibilidade {
-    background: #111;
+.contraste header,
+.contraste section {
+    background: black;
 
     color: white;
 }
 
-body.contraste .acessibilidade-grupo button {
-    background: #111;
-
+.contraste h1,
+.contraste h2,
+.contraste h3,
+.contraste p {
     color: white;
+}
+
+.contraste .card {
+    background: #222;
 
     border-color: white;
 }
 
 
-/* =========================================
+/* ==============================
    GUIA DE LEITURA
-========================================= */
+============================== */
 
-#guiaLeitura {
+#guia {
+    display: none;
+
     position: fixed;
 
     left: 0;
 
     width: 100%;
+    height: 5px;
 
-    height: 8px;
+    background: #1976d2;
 
-    background: rgba(255,190,0,.85);
-
-    box-shadow:
-        0 0 10px rgba(255,190,0,.6);
-
-    z-index: 5000;
+    z-index: 900;
 
     pointer-events: none;
-
-    display: none;
 }
 
-#guiaLeitura.ativo {
+#guia.ativo {
     display: block;
 }
 
 
-/* =========================================
-   RESPONSIVO
-========================================= */
+/* ==============================
+   RODAPÉ
+============================== */
 
-@media (max-width: 900px) {
+footer {
+    padding: 40px;
 
-    .nav-links {
-        display: none;
-    }
+    text-align: center;
 
-    .menu-mobile {
-        display: block;
-    }
+    background: #17324d;
 
-    .hero {
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-    }
-
-    .hero-card {
-        max-width: 600px;
-    }
-
-    .info-grid,
-    .recursos-grid,
-    .curiosidades-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .section-recursos {
-        margin-left: 0;
-        margin-right: 0;
-
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    .cta {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    color: white;
 }
 
 
-@media (max-width: 600px) {
+/* ==============================
+   CELULAR
+============================== */
 
-    .navbar {
-        padding: 18px 20px;
+@media (max-width: 800px) {
+
+    .inicio h1 {
+        font-size: 40px;
     }
 
-    .hero {
-        padding: 55px 20px 80px;
-    }
-
-    .hero h1 {
-        font-size: 44px;
-    }
-
-    .hero-text > p {
-        font-size: 16px;
-    }
-
-    .section {
-        padding: 70px 20px;
-    }
-
-    .info-grid,
-    .recursos-grid,
-    .curiosidades-grid {
+    .cards {
         grid-template-columns: 1fr;
     }
 
-    .painel-acessibilidade {
-        width: 88%;
-        right: -90%;
-
-        padding: 25px;
+    #painel {
+        width: 100%;
     }
 
-    #btnAcessibilidade {
-        right: 15px;
-        bottom: 15px;
-
-        padding: 13px 16px;
-    }
-
-    #btnAcessibilidade span {
-        display: none;
-    }
-
-    .cta {
-        margin: 20px;
-
-        padding: 35px 25px;
-    }
-
-    .cta h2 {
-        font-size: 30px;
-    }
-
-    .footer-content {
-        flex-direction: column;
-    }
-
-    .footer-links {
-        flex-wrap: wrap;
-    }
 }
-
-
-
-
-
-
 

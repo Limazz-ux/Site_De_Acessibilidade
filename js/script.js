@@ -1,215 +1,213 @@
-/* =========================================
-   PAINEL DE ACESSIBILIDADE
-========================================= */
+// =============================
+// ABRIR PAINEL
+// =============================
 
 function abrirPainel() {
 
-    const painel =
-        document.getElementById("painelAcessibilidade");
+    fetch("painel.php?modo=painel")
 
-    const botao =
-        document.getElementById("btnAcessibilidade");
+        .then(function(resposta) {
 
-    painel.classList.add("aberto");
+            return resposta.text();
 
-    botao.style.display = "none";
+        })
+
+        .then(function(painel) {
+
+            document.getElementById("areaPainel").innerHTML = painel;
+
+        });
+
 }
 
+
+// =============================
+// FECHAR PAINEL
+// =============================
 
 function fecharPainel() {
 
-    const painel =
-        document.getElementById("painelAcessibilidade");
+    document.getElementById("areaPainel").innerHTML = "";
 
-    const botao =
-        document.getElementById("btnAcessibilidade");
-
-    painel.classList.remove("aberto");
-
-    botao.style.display = "block";
 }
 
 
-/* =========================================
-   TAMANHO DO TEXTO
-========================================= */
+// =============================
+// 1. AUMENTAR TEXTO
+// =============================
 
 function aumentarTexto() {
 
-    document.body.classList.add("texto-grande");
+    document.getElementById("conteudo")
+        .style.fontSize = "20px";
+
 }
 
+
+// =============================
+// 2. DIMINUIR TEXTO
+// =============================
 
 function diminuirTexto() {
 
-    document.body.classList.remove("texto-grande");
+    document.getElementById("conteudo")
+        .style.fontSize = "16px";
+
 }
 
 
-/* =========================================
-   ESPAÇAMENTO
-========================================= */
+// =============================
+// 3. ESPAÇAMENTO DAS LETRAS
+// =============================
 
-function alternarEspacamento() {
+function espacamentoLetras() {
 
-    document.body.classList.toggle("espacamento");
+    document.body.classList.toggle("letras");
+
 }
 
 
-function alternarLinhas() {
+// =============================
+// 4. ESPAÇAMENTO DAS LINHAS
+// =============================
+
+function espacamentoLinhas() {
 
     document.body.classList.toggle("linhas");
+
 }
 
 
-/* =========================================
-   CONTRASTE
-========================================= */
+// =============================
+// 5. FONTE
+// =============================
 
-function altoContraste() {
+function mudarFonte() {
+
+    document.body.classList.toggle("fonte");
+
+}
+
+
+// =============================
+// 6. FUNDO CONFORTÁVEL
+// =============================
+
+function fundoConfortavel() {
+
+    document.body.classList.toggle("creme");
+
+}
+
+
+// =============================
+// 7. CONTRASTE
+// =============================
+
+function contraste() {
 
     document.body.classList.toggle("contraste");
+
 }
 
 
-/* =========================================
-   FUNDO CONFORTÁVEL
-========================================= */
+// =============================
+// 8. GUIA DE LEITURA
+// =============================
 
-function modoCreme() {
+function guiaLeitura() {
 
-    document.body.classList.toggle("fundo-creme");
+    document.getElementById("guia")
+        .classList.toggle("ativo");
+
 }
 
 
-/* =========================================
-   FONTE
-========================================= */
+// Faz a linha acompanhar o mouse
 
-function alternarFonte() {
+document.addEventListener(
+    "mousemove",
 
-    document.body.classList.toggle("fonte-dislexia");
-}
+    function(event) {
 
+        let guia =
+            document.getElementById("guia");
 
-/* =========================================
-   GUIA DE LEITURA
-========================================= */
+        if (guia) {
 
-function alternarGuia() {
+            guia.style.top =
+                event.clientY + "px";
 
-    const guia =
-        document.getElementById("guiaLeitura");
+        }
 
-    guia.classList.toggle("ativo");
-}
-
-
-document.addEventListener("mousemove", function(event) {
-
-    const guia =
-        document.getElementById("guiaLeitura");
-
-    if (
-        guia &&
-        guia.classList.contains("ativo")
-    ) {
-        guia.style.top =
-            `${event.clientY - 4}px`;
     }
+);
 
-});
 
-
-/* =========================================
-   LEITURA EM VOZ ALTA
-========================================= */
+// =============================
+// 9. LEITURA EM VOZ ALTA
+// =============================
 
 function lerPagina() {
 
-    if (!("speechSynthesis" in window)) {
-
-        alert(
-            "Seu navegador não oferece suporte à leitura de texto."
-        );
-
-        return;
-    }
+    let texto =
+        document.getElementById("conteudo")
+            .innerText;
 
 
-    speechSynthesis.cancel();
-
-
-    const conteudo =
-        document.getElementById("conteudo");
-
-
-    const texto =
-        conteudo.innerText;
-
-
-    const leitura =
+    let leitura =
         new SpeechSynthesisUtterance(texto);
 
 
     leitura.lang = "pt-BR";
 
-    leitura.rate = 0.85;
-
-    leitura.pitch = 1;
-
-    leitura.volume = 1;
-
 
     speechSynthesis.speak(leitura);
+
 }
 
+
+// =============================
+// PARAR LEITURA
+// =============================
 
 function pararLeitura() {
 
-    if ("speechSynthesis" in window) {
+    speechSynthesis.cancel();
 
-        speechSynthesis.cancel();
-
-    }
 }
 
 
-/* =========================================
-   RESET
-========================================= */
+// =============================
+// RESTAURAR
+// =============================
 
-function resetarAcessibilidade() {
+function resetar() {
 
     document.body.classList.remove(
-        "texto-grande",
-        "espacamento",
+        "letras",
         "linhas",
-        "contraste",
-        "fundo-creme",
-        "fonte-dislexia"
+        "fonte",
+        "creme",
+        "contraste"
     );
 
 
-    const guia =
-        document.getElementById("guiaLeitura");
+    document.getElementById("conteudo")
+        .style.fontSize = "16px";
 
 
-    guia.classList.remove("ativo");
+    let guia =
+        document.getElementById("guia");
 
 
-    pararLeitura();
-}
+    if (guia) {
+
+        guia.classList.remove("ativo");
+
+    }
 
 
-/* =========================================
-   MENU MOBILE
-========================================= */
+    speechSynthesis.cancel();
 
-function alternarMenu() {
-
-    const nav =
-        document.querySelector(".nav-links");
-
-    nav.classList.toggle("menu-aberto");
 }
