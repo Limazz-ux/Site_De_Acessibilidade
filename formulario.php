@@ -1,4 +1,18 @@
+<?php
+session_start();
+include("conexao/conexao.php");
 
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $experiencia = $_POST['experiencia'];
+    $util = $_POST['util'];
+    $sugestoes = $_POST['sugestoes'];
+
+    $sql = "INSERT INTO formulario(nome, email, experiencia, util, sugestoes) VALUES ('$nome', '$email', '$experiencia', '$util' , '$sugestoes')";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -80,7 +94,7 @@
                      FORMULÁRIO
                 ========================== -->
 
-                <form id="formularioPesquisa" method="post" action="processar_formulario.php">
+                <form id="formularioPesquisa" method="POST" action="formulario.php">
 
                     <!-- NOME -->
                     <div class="campo">
@@ -156,14 +170,14 @@
                     <!-- RECURSO PREFERIDO -->
                     <div class="campo">
 
-                        <label for="recursoPreferido">
+                        <label for="util">
                             Qual recurso você considera
                             mais útil?
                         </label>
 
                         <select
-                            id="recursoPreferido"
-                            name="recursoPreferido"
+                            id="util"
+                            name="util"
                             required>
 
                             <option value="">
@@ -225,9 +239,7 @@
                     </button>
 
                     <!-- MENSAGEM -->
-                    <p id="mensagemFormulario"
-                       role="status"
-                       aria-live="polite"></p>
+                 
 
                 </form>
 

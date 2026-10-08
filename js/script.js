@@ -440,3 +440,38 @@ document.addEventListener("DOMContentLoaded", function() {
     configurarFormulario();
 
 });
+
+
+const formulario = document.getElementById("formularioPesquisa");
+const mensagem = document.getElementById("mensagemFormulario");
+
+formulario.addEventListener("submit", async function (event) {
+
+    // Impede o navegador de recarregar a página
+    event.preventDefault();
+
+    const dados = new FormData(formulario);
+
+    try {
+
+        const resposta = await fetch("processar_formulario.php", {
+            method: "POST",
+            body: dados
+        });
+
+        const resultado = await resposta.text();
+
+        mensagem.textContent = resultado;
+
+        // Limpa o formulário após sucesso
+        formulario.reset();
+
+    } catch (erro) {
+
+        mensagem.textContent =
+            "Erro ao enviar o formulário.";
+
+        console.error(erro);
+    }
+
+});
