@@ -1,167 +1,132 @@
-<?php
 
-$paginaCompleta = !isset($_GET["modo"]);
+<!-- PAINEL DE ACESSIBILIDADE -->
 
-?>
+<div id="painel"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="tituloPainel">
 
+    <!-- CABEÇALHO DO PAINEL -->
+    <div class="painel-cabecalho">
 
-<?php if ($paginaCompleta) { ?>
-
-<!DOCTYPE html>
-
-<html lang="pt-BR">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>Painel de Acessibilidade</title>
-
-    <link
-        rel="stylesheet"
-        href="style/style.css">
-
-</head>
-
-<body>
-
-    <a
-        href="acessibilidade.php"
-        class="voltar">
-
-        ← Voltar
-
-    </a>
-
-<?php } ?>
-
-
-<!-- PAINEL -->
-
-<div id="painel">
-
-
-    <!-- X aparece quando estiver na página principal -->
-
-    <?php if (!$paginaCompleta) { ?>
+        <h2 id="tituloPainel">
+            Acessibilidade
+        </h2>
 
         <button
+            type="button"
             class="fechar"
-            onclick="fecharPainel()">
-
-            X
-
+            onclick="fecharPainel()"
+            aria-label="Fechar painel">
+            ✕
         </button>
 
-    <?php } ?>
+    </div>
 
-
-    <h2>Acessibilidade</h2>
-
-    <p>
-        Personalize a página para deixar
-        sua leitura mais confortável.
+    <p class="painel-descricao">
+        Personalize sua experiência de leitura.
     </p>
 
+    <!-- TAMANHO DO TEXTO -->
+    <div class="grupo-painel">
 
-    <!-- 1 -->
+        <h3>Tamanho do texto</h3>
 
-    <button onclick="aumentarTexto()">
-        🔎 Aumentar texto
-    </button>
+        <div class="botoes-linha">
 
+            <button
+                type="button"
+                onclick="diminuirTexto()">
+                A− Diminuir
+            </button>
 
-    <!-- 2 -->
+            <button
+                type="button"
+                onclick="aumentarTexto()">
+                A+ Aumentar
+            </button>
 
-    <button onclick="diminuirTexto()">
-        🔍 Diminuir texto
-    </button>
+        </div>
 
+    </div>
 
-    <!-- 3 -->
+    <!-- ESPAÇAMENTO -->
+    <div class="grupo-painel">
 
-    <button onclick="espacamentoLetras()">
-        ↔ Espaçamento entre letras
-    </button>
+        <h3>Espaçamento</h3>
 
+        <button
+            type="button"
+            onclick="espacamentoLetras()">
+            ↔ Espaçamento entre letras
+        </button>
 
-    <!-- 4 -->
+        <button
+            type="button"
+            onclick="espacamentoLinhas()">
+            ☰ Espaçamento entre linhas
+        </button>
 
-    <button onclick="espacamentoLinhas()">
-        ☰ Espaçamento entre linhas
-    </button>
+    </div>
 
+    <!-- APARÊNCIA -->
+    <div class="grupo-painel">
 
-    <!-- 5 -->
+        <h3>Aparência</h3>
 
-    <button onclick="mudarFonte()">
-        Aa Fonte de leitura
-    </button>
+        <button
+            type="button"
+            onclick="mudarFonte()">
+            Aa Alterar fonte
+        </button>
 
+        <button
+            type="button"
+            onclick="fundoConfortavel()">
+            ☀ Fundo confortável
+        </button>
 
-    <!-- 6 -->
+        <button
+            type="button"
+            onclick="contraste()">
+            ◐ Alto contraste
+        </button>
 
-    <button onclick="fundoConfortavel()">
-        ☀ Fundo confortável
-    </button>
+    </div>
 
+    <!-- FERRAMENTAS DE LEITURA -->
+    <div class="grupo-painel">
 
-    <!-- 7 -->
+        <h3>Ferramentas de leitura</h3>
 
-    <button onclick="contraste()">
-        ◐ Alto contraste
-    </button>
+        <button
+            type="button"
+            onclick="guiaLeitura()">
+            ━ Guia de leitura
+        </button>
 
+        <button
+            type="button"
+            onclick="lerPagina()">
+            🔊 Ler página em voz alta
+        </button>
 
-    <!-- 8 -->
+        <button
+            type="button"
+            class="parar"
+            onclick="pararLeitura()">
+            ■ Parar leitura
+        </button>
 
-    <button onclick="guiaLeitura()">
-        ━ Guia de leitura
-    </button>
+    </div>
 
-
-    <!-- 9 -->
-
-    <button onclick="lerPagina()">
-        🔊 Ler página
-    </button>
-
-
-    <!-- PARAR -->
-
+    <!-- RESTAURAR CONFIGURAÇÕES -->
     <button
-        class="parar"
-        onclick="pararLeitura()">
-
-        ■ Parar leitura
-
-    </button>
-
-
-    <!-- RESTAURAR -->
-
-    <button
+        type="button"
         class="resetar"
         onclick="resetar()">
-
-        ↻ Restaurar
-
+        Restaurar configurações
     </button>
 
 </div>
 
-
-<?php if ($paginaCompleta) { ?>
-
-
-    <script src="js/script.js"></script>
-
-</body>
-
-</html>
-
-<?php } ?>

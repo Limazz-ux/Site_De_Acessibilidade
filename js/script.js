@@ -1,213 +1,454 @@
-// =============================
-// ABRIR PAINEL
-// =============================
 
-function abrirPainel() {
+// =====================================
+// CONFIGURAÇÕES DE ACESSIBILIDADE
+// =====================================
 
-    fetch("painel.php?modo=painel")
+const configuracaoPadrao = {
+    tamanho: 100,
+    letras: false,
+    linhas: false,
+    fonte: false,
+    creme: false,
+    contraste: false,
+    guia: false
+};
 
-        .then(function(resposta) {
+let configuracoes = { ...configuracaoPadrao };
+let ultimoFoco = null;
 
-            return resposta.text();
+try {
+    const salvas = JSON.parse(
+        localStorage.getItem("dislexiaConfiguracoes")
+    );
 
-        })
-
-        .then(function(painel) {
-
-            document.getElementById("areaPainel").innerHTML = painel;
-
-        });
-
+    if (salvas && typeof salvas === "object") {
+        configuracoes = {
+            ...configuracaoPadrao,
+            ...salvas
+        };
+    }
+} catch (erro) {
+    console.warn("Não foi possível recuperar as configurações.");
 }
 
 
-// =============================
+// =====================================
+// SALVAR CONFIGURAÇÕES
+// =====================================
+
+function salvarConfiguracoes() {
+
+    try {
+        localStorage.setItem(
+            "dislexiaConfiguracoes",
+            JSON.stringify(configuracoes)
+        );
+    } catch (erro) {
+        console.warn("Não foi possível salvar as configurações.");
+    }
+}
+
+
+// =====================================
+// APLICAR CONFIGURAÇÕES
+// =====================================
+
+function aplicarConfiguracoes() {
+
+    const conteudo = document.getElementById("conteudo");
+    const guia = document.getElementById("guia");
+
+    if (!conteudo) return;
+
+    configuracoes.tamanho = Math.min(
+        150,
+        Math.max(80, Number(configuracoes.tamanho) || 100)
+    );
+
+    conteudo.style.setProperty(
+        "--escala-texto",
+        configuracoes.tamanho / 100
+    );
+
+    document.body.classList.toggle(
+        "letras",
+        Boolean(configuracoes.letras)
+    );
+
+    document.body.classList.toggle(
+        "linhas",
+        Boolean(configuracoes.linhas)
+    );
+
+    document.body.classList.toggle(
+        "fonte",
+        Boolean(configuracoes.fonte)
+    );
+
+    document.body.classList.toggle(
+        "creme",
+        Boolean(configuracoes.creme)
+    );
+
+    document.body.classList.toggle(
+        "contraste",
+        Boolean(configuracoes.contraste)
+    );
+
+    if (guia) {
+        guia.classList.toggle(
+            "ativo",
+            Boolean(configuracoes.guia)
+        );
+    }
+}
+
+
+// =====================================
+// ABRIR PAINEL
+// =====================================
+
+async function abrirPainel() {
+
+    const area = document.getElementById("areaPainel");
+
+    if (!area || document.getElementById("painel")) {
+        return;
+    }
+
+    ultimoFoco = document.activeElement;
+
+    try {
+
+        const resposta = await fetch("painel.php");
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao carregar painel");
+        }
+
+        const html = await resposta.text();
+
+        area.innerHTML = html;
+
+        const botaoFechar = area.querySelector(".fechar");
+
+        if (botaoFechar) {
+            botaoFechar.focus();
+        }
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Não foi possível carregar o painel.");
+
+    }
+}
+
+
+// =====================================
 // FECHAR PAINEL
-// =============================
+// =====================================
 
 function fecharPainel() {
 
-    document.getElementById("areaPainel").innerHTML = "";
+    const area = document.getElementById("areaPainel");
 
+    if (area) {
+        area.innerHTML = "";
+    }
+
+    if (ultimoFoco && ultimoFoco.isConnected) {
+        ultimoFoco.focus();
+    }
 }
 
 
-// =============================
-// 1. AUMENTAR TEXTO
-// =============================
+// =====================================
+// AUMENTAR TEXTO
+// =====================================
 
 function aumentarTexto() {
 
-    document.getElementById("conteudo")
-        .style.fontSize = "20px";
+    configuracoes.tamanho = Math.min(
+        150,
+        configuracoes.tamanho + 10
+    );
 
+    atualizar();
 }
 
 
-// =============================
-// 2. DIMINUIR TEXTO
-// =============================
+// =====================================
+// DIMINUIR TEXTO
+// =====================================
 
 function diminuirTexto() {
 
-    document.getElementById("conteudo")
-        .style.fontSize = "16px";
+    configuracoes.tamanho = Math.max(
+        80,
+        configuracoes.tamanho - 10
+    );
 
+    atualizar();
 }
 
 
-// =============================
-// 3. ESPAÇAMENTO DAS LETRAS
-// =============================
+// =====================================
+// ESPAÇAMENTO DAS LETRAS
+// =====================================
 
 function espacamentoLetras() {
 
-    document.body.classList.toggle("letras");
+    configuracoes.letras = !configuracoes.letras;
 
+    atualizar();
 }
 
 
-// =============================
-// 4. ESPAÇAMENTO DAS LINHAS
-// =============================
+// =====================================
+// ESPAÇAMENTO DAS LINHAS
+// =====================================
 
 function espacamentoLinhas() {
 
-    document.body.classList.toggle("linhas");
+    configuracoes.linhas = !configuracoes.linhas;
 
+    atualizar();
 }
 
 
-// =============================
-// 5. FONTE
-// =============================
+// =====================================
+// ALTERAR FONTE
+// =====================================
 
 function mudarFonte() {
 
-    document.body.classList.toggle("fonte");
+    configuracoes.fonte = !configuracoes.fonte;
 
+    atualizar();
 }
 
 
-// =============================
-// 6. FUNDO CONFORTÁVEL
-// =============================
+// =====================================
+// FUNDO CONFORTÁVEL
+// =====================================
 
 function fundoConfortavel() {
 
-    document.body.classList.toggle("creme");
+    configuracoes.creme = !configuracoes.creme;
 
+    if (configuracoes.creme) {
+        configuracoes.contraste = false;
+    }
+
+    atualizar();
 }
 
 
-// =============================
-// 7. CONTRASTE
-// =============================
+// =====================================
+// ALTO CONTRASTE
+// =====================================
 
 function contraste() {
 
-    document.body.classList.toggle("contraste");
+    configuracoes.contraste = !configuracoes.contraste;
 
+    if (configuracoes.contraste) {
+        configuracoes.creme = false;
+    }
+
+    atualizar();
 }
 
 
-// =============================
-// 8. GUIA DE LEITURA
-// =============================
+// =====================================
+// GUIA DE LEITURA
+// =====================================
 
 function guiaLeitura() {
 
-    document.getElementById("guia")
-        .classList.toggle("ativo");
+    configuracoes.guia = !configuracoes.guia;
 
+    atualizar();
 }
 
 
-// Faz a linha acompanhar o mouse
+// =====================================
+// ACOMPANHAR MOVIMENTO DO MOUSE
+// =====================================
 
-document.addEventListener(
-    "mousemove",
+document.addEventListener("mousemove", function(evento) {
 
-    function(event) {
+    const guia = document.getElementById("guia");
 
-        let guia =
-            document.getElementById("guia");
+    if (guia && configuracoes.guia) {
 
-        if (guia) {
-
-            guia.style.top =
-                event.clientY + "px";
-
-        }
+        guia.style.top = evento.clientY + "px";
 
     }
-);
+
+});
 
 
-// =============================
-// 9. LEITURA EM VOZ ALTA
-// =============================
+// =====================================
+// LEITURA EM VOZ ALTA
+// =====================================
 
 function lerPagina() {
 
-    let texto =
-        document.getElementById("conteudo")
-            .innerText;
+    if (!("speechSynthesis" in window)) {
 
-
-    let leitura =
-        new SpeechSynthesisUtterance(texto);
-
-
-    leitura.lang = "pt-BR";
-
-
-    speechSynthesis.speak(leitura);
-
-}
-
-
-// =============================
-// PARAR LEITURA
-// =============================
-
-function pararLeitura() {
-
-    speechSynthesis.cancel();
-
-}
-
-
-// =============================
-// RESTAURAR
-// =============================
-
-function resetar() {
-
-    document.body.classList.remove(
-        "letras",
-        "linhas",
-        "fonte",
-        "creme",
-        "contraste"
-    );
-
-
-    document.getElementById("conteudo")
-        .style.fontSize = "16px";
-
-
-    let guia =
-        document.getElementById("guia");
-
-
-    if (guia) {
-
-        guia.classList.remove("ativo");
+        alert("Seu navegador não suporta leitura em voz alta.");
+        return;
 
     }
 
-
     speechSynthesis.cancel();
 
+    const conteudo = document.getElementById("conteudo");
+
+    if (!conteudo) return;
+
+    const texto = conteudo.innerText;
+
+    const leitura = new SpeechSynthesisUtterance(texto);
+
+    leitura.lang = "pt-BR";
+    leitura.rate = 0.9;
+    leitura.pitch = 1;
+    leitura.volume = 1;
+
+    const vozes = speechSynthesis.getVoices();
+
+    const vozPortugues = vozes.find(function(voz) {
+        return voz.lang.toLowerCase() === "pt-br";
+    });
+
+    if (vozPortugues) {
+        leitura.voice = vozPortugues;
+    }
+
+    speechSynthesis.speak(leitura);
 }
+
+
+// =====================================
+// PARAR LEITURA
+// =====================================
+
+function pararLeitura() {
+
+    if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+    }
+}
+
+
+// =====================================
+// RESTAURAR CONFIGURAÇÕES
+// =====================================
+
+function resetar() {
+
+    configuracoes = { ...configuracaoPadrao };
+
+    pararLeitura();
+
+    atualizar();
+}
+
+
+// =====================================
+// ATUALIZAR E SALVAR
+// =====================================
+
+function atualizar() {
+
+    aplicarConfiguracoes();
+
+    salvarConfiguracoes();
+}
+
+
+// =====================================
+// FECHAR PAINEL COM ESC
+// =====================================
+
+document.addEventListener("keydown", function(evento) {
+
+    const painel = document.getElementById("painel");
+
+    if (!painel) return;
+
+    if (evento.key === "Escape") {
+        fecharPainel();
+        return;
+    }
+
+    if (evento.key === "Tab") {
+
+        const elementos = Array.from(
+            painel.querySelectorAll(
+                "button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])"
+            )
+        );
+
+        if (elementos.length === 0) return;
+
+        const primeiro = elementos[0];
+        const ultimo = elementos[elementos.length - 1];
+
+        if (evento.shiftKey && document.activeElement === primeiro) {
+            evento.preventDefault();
+            ultimo.focus();
+        } else if (!evento.shiftKey && document.activeElement === ultimo) {
+            evento.preventDefault();
+            primeiro.focus();
+        }
+    }
+
+});
+
+
+// =====================================
+// FORMULÁRIO DEMONSTRATIVO
+// =====================================
+
+function configurarFormulario() {
+
+    const formulario = document.getElementById(
+        "formularioPesquisa"
+    );
+
+    if (!formulario) return;
+
+    formulario.addEventListener("submit", function(evento) {
+
+        evento.preventDefault();
+
+        const mensagem = document.getElementById(
+            "mensagemFormulario"
+        );
+
+        if (mensagem) {
+            mensagem.textContent =
+                "Formulário validado. O envio ainda não está conectado ao banco de dados.";
+        }
+
+    });
+
+}
+
+
+// =====================================
+// INICIALIZAÇÃO
+// =====================================
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    aplicarConfiguracoes();
+
+    configurarFormulario();
+
+});

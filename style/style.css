@@ -1,6 +1,7 @@
-/* ==============================
-   GERAL
-============================== */
+
+/* ==========================
+   CONFIGURAÇÕES GERAIS
+========================== */
 
 * {
     box-sizing: border-box;
@@ -12,73 +13,104 @@ html {
 
 body {
     margin: 0;
-
     font-family: Arial, sans-serif;
-
     color: #263238;
-
-    background: white;
+    background: #ffffff;
 }
 
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
 
-/* ==============================
-   MENU
-============================== */
+button {
+    cursor: pointer;
+}
 
-header {
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
+}
+
+/* ==========================
+   CABEÇALHO
+========================== */
+
+.cabecalho {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
+    gap: 20px;
     padding: 20px 10%;
-
     background: white;
 }
 
 .logo {
+    font-size: 28px;
+    font-weight: bold;
     color: #1976d2;
-}
-
-nav a {
-    margin-left: 25px;
-
-    color: #333;
-
     text-decoration: none;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
 
-/* ==============================
+nav a {
+    color: #263238;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #1976d2;
+}
+
+.botao-menu {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #1976d2;
+    color: white;
+}
+
+.botao-menu:hover {
+    background: #125aa3;
+}
+
+/* ==========================
    INÍCIO
-============================== */
+========================== */
 
 .inicio {
     min-height: 550px;
-
     display: flex;
     align-items: center;
-
     padding: 80px 10%;
-
     background: #eef7ff;
 }
 
-.inicio div {
-    max-width: 700px;
+.inicio-conteudo {
+    max-width: 750px;
 }
 
 .tag {
     color: #1976d2;
-
     font-weight: bold;
 }
 
 .inicio h1 {
     font-size: 55px;
-
-    line-height: 1.1;
-
+    line-height: 1.2;
     color: #17324d;
 }
 
@@ -87,325 +119,404 @@ nav a {
 }
 
 .inicio p {
+    max-width: 650px;
     font-size: 18px;
-
-    line-height: 1.7;
-}
-
-
-/* BOTÕES */
-
-.inicio button,
-.informacao button {
-    padding: 15px 25px;
-
-    margin-top: 20px;
-
-    border: none;
-    border-radius: 8px;
-
-    background: #1976d2;
-
-    color: white;
-
-    cursor: pointer;
-}
-
-
-/* ==============================
-   SEÇÕES
-============================== */
-
-section {
-    padding: 80px 10%;
-}
-
-section > p {
-    max-width: 700px;
-
     line-height: 1.8;
 }
 
+/* ==========================
+   BOTÕES PRINCIPAIS
+========================== */
 
-/* ==============================
+.botao-principal,
+.botao-link {
+    display: inline-block;
+    padding: 15px 25px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: #1976d2;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.botao-principal:hover,
+.botao-link:hover {
+    background: #125aa3;
+}
+
+/* ==========================
+   SEÇÕES
+========================== */
+
+.secao {
+    padding: 80px 10%;
+}
+
+.secao h2 {
+    font-size: 32px;
+    color: #17324d;
+}
+
+.secao > p {
+    max-width: 750px;
+    line-height: 1.8;
+}
+
+/* ==========================
    CARDS
-============================== */
+========================== */
 
 .cards {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-
     margin-top: 40px;
 }
 
 .card {
     padding: 25px;
-
-    background: #f4f9fd;
-
-    border: 1px solid #e1ebf3;
-
+    border: 1px solid #dce7f0;
     border-radius: 12px;
+    background: #f4f9fd;
 }
 
 .card h3 {
     color: #1976d2;
 }
 
-
-/* ==============================
-   INFORMAÇÃO
-============================== */
-
-.informacao {
-    text-align: center;
-
-    background: #eef7ff;
+.card p {
+    line-height: 1.7;
 }
 
-.informacao p {
+/* ==========================
+   CHAMADA FORMULÁRIO
+========================== */
+
+.chamada-formulario {
+    background: #f8fbff;
+    text-align: center;
+}
+
+.chamada-formulario p {
     margin: auto;
 }
 
+/* ==========================
+   INFORMAÇÃO FINAL
+========================== */
 
-/* ==============================
-   PAINEL
-============================== */
-
-#painel {
-    position: fixed;
-
-    top: 0;
-    right: 0;
-
-    width: 350px;
-    height: 100vh;
-
-    padding: 30px;
-
-    background: white;
-
-    box-shadow:
-        -5px 0 20px #999;
-
-    z-index: 1000;
-}
-
-
-/* TÍTULO */
-
-#painel h2 {
-    color: #1976d2;
-
-    font-size: 28px;
-}
-
-
-/* TEXTO */
-
-#painel > p {
-    color: #666;
-
-    margin-bottom: 25px;
-}
-
-
-/* BOTÕES */
-
-#painel button {
-    width: 100%;
-
-    padding: 12px;
-
-    margin-bottom: 8px;
-
-    border: none;
-    border-radius: 7px;
-
-    background: #f1f6fa;
-
-    cursor: pointer;
-
-    text-align: left;
-}
-
-
-/* PASSAR MOUSE */
-
-#painel button:hover {
-    background: #dcefff;
-}
-
-
-/* ==============================
-   BOTÃO FECHAR
-============================== */
-
-#painel .fechar {
-    width: 45px;
-
-    float: right;
-
-    background: #1976d2;
-
-    color: white;
-
+.informacao {
+    padding: 80px 10%;
+    background: #eef7ff;
     text-align: center;
 }
 
-
-/* ==============================
-   PARAR
-============================== */
-
-#painel .parar {
-    color: #c62828;
-}
-
-
-/* ==============================
-   RESTAURAR
-============================== */
-
-#painel .resetar {
-    margin-top: 15px;
-
-    background: #1976d2;
-
-    color: white;
-
-    text-align: center;
-}
-
-
-/* ==============================
-   VOLTAR
-============================== */
-
-.voltar {
-    position: fixed;
-
-    top: 25px;
-    left: 30px;
-
-    padding: 12px 20px;
-
-    background: #1976d2;
-
-    color: white;
-
-    border-radius: 8px;
-
-    text-decoration: none;
-}
-
-
-/* ==============================
-   TESTE DO PAINEL
-============================== */
-
-.teste {
-    max-width: 700px;
-
-    padding: 100px 8%;
-}
-
-.teste h1 {
-    font-size: 40px;
-
+.informacao h2 {
     color: #17324d;
 }
 
+.informacao p {
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.8;
+}
 
-/* ==============================
-   ACESSIBILIDADE
-============================== */
+/* ==========================
+   FORMULÁRIO
+========================== */
 
+.formulario-secao {
+    background: #f4f9fd;
+    min-height: 75vh;
+}
 
-/* 3. ESPAÇAMENTO DAS LETRAS */
+.formulario-container {
+    max-width: 750px;
+    margin: auto;
+    padding: 40px;
+    background: white;
+    border: 1px solid #dce7f0;
+    border-radius: 15px;
+}
+
+.formulario-container h1 {
+    font-size: 36px;
+    color: #17324d;
+}
+
+.formulario-container > p {
+    line-height: 1.7;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.campo label {
+    font-weight: bold;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #b8c9d6;
+    border-radius: 8px;
+    background: white;
+    color: #263238;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+#mensagemFormulario {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* ==========================
+   PAINEL DE ACESSIBILIDADE
+========================== */
+
+#painel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(380px, 100%);
+    height: 100vh;
+    height: 100dvh;
+    padding: 25px;
+    background: white;
+    color: #263238;
+    box-shadow: -5px 0 25px #00000030;
+    z-index: 1000;
+    overflow-y: auto;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    letter-spacing: normal;
+    line-height: 1.5;
+}
+
+.painel-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#painel h2 {
+    margin: 0;
+    font-size: 26px;
+    color: #1976d2;
+}
+
+#painel .fechar {
+    width: 45px;
+    min-height: 45px;
+    flex-shrink: 0;
+    background: #1976d2;
+    color: white;
+    text-align: center;
+}
+
+.painel-descricao {
+    color: #555;
+    margin: 20px 0 25px;
+}
+
+.grupo-painel {
+    margin-bottom: 25px;
+}
+
+.grupo-painel h3 {
+    margin-bottom: 12px;
+    font-size: 17px;
+    color: #17324d;
+}
+
+#painel button {
+    padding: 12px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.grupo-painel > button {
+    width: 100%;
+    margin-bottom: 8px;
+    background: #f1f6fa;
+    text-align: left;
+}
+
+.grupo-painel > button:hover,
+.botoes-linha button:hover {
+    background: #dcefff;
+}
+
+.botoes-linha {
+    display: flex;
+    gap: 10px;
+}
+
+.botoes-linha button {
+    flex: 1;
+    background: #f1f6fa;
+}
+
+#painel .parar {
+    color: #b71c1c;
+}
+
+#painel .resetar {
+    width: 100%;
+    margin-top: 10px;
+    background: #1976d2;
+    color: white;
+    text-align: center;
+}
+
+/* ==========================
+   RECURSOS DE ACESSIBILIDADE
+========================== */
+
+/* TAMANHO DO TEXTO */
+
+#conteudo {
+    --escala-texto: 1;
+}
+
+#conteudo h1 {
+    font-size: calc(55px * var(--escala-texto));
+}
+
+#conteudo .formulario-container h1 {
+    font-size: calc(36px * var(--escala-texto));
+}
+
+#conteudo h2 {
+    font-size: calc(32px * var(--escala-texto));
+}
+
+#conteudo h3 {
+    font-size: calc(20px * var(--escala-texto));
+}
+
+#conteudo p,
+#conteudo label,
+#conteudo input,
+#conteudo select,
+#conteudo textarea,
+#conteudo button,
+#conteudo .tag,
+#conteudo .botao-link {
+    font-size: calc(16px * var(--escala-texto));
+}
+
+/* ESPAÇAMENTO DAS LETRAS */
 
 .letras #conteudo {
-    letter-spacing: 3px;
+    letter-spacing: 0.12em;
 }
 
-
-/* 4. ESPAÇAMENTO DAS LINHAS */
+/* ESPAÇAMENTO DAS LINHAS */
 
 .linhas #conteudo {
-    line-height: 2.5;
+    line-height: 2;
 }
 
+.linhas #conteudo p,
+.linhas #conteudo h1,
+.linhas #conteudo h2,
+.linhas #conteudo h3 {
+    line-height: 2;
+}
 
-/* 5. FONTE */
+/* ALTERAÇÃO DE FONTE */
 
 .fonte #conteudo {
     font-family: Verdana, Arial, sans-serif;
 }
 
-
-/* 6. FUNDO CONFORTÁVEL */
+/* FUNDO CONFORTÁVEL */
 
 .creme {
     background: #fff4d6;
 }
 
-.creme header,
-.creme section {
+.creme .cabecalho,
+.creme #conteudo section,
+.creme .card,
+.creme .formulario-container {
     background: #fff4d6;
 }
 
-
-/* 7. ALTO CONTRASTE */
+/* ALTO CONTRASTE */
 
 .contraste {
-    background: black;
-
-    color: white;
+    background: #000;
+    color: #fff;
 }
 
-.contraste header,
-.contraste section {
-    background: black;
-
-    color: white;
+.contraste .cabecalho,
+.contraste #conteudo section,
+.contraste .card,
+.contraste .formulario-container,
+.contraste footer {
+    background: #000;
+    color: #fff;
 }
 
-.contraste h1,
-.contraste h2,
-.contraste h3,
-.contraste p {
-    color: white;
+.contraste #conteudo h1,
+.contraste #conteudo h2,
+.contraste #conteudo h3,
+.contraste #conteudo p,
+.contraste #conteudo label,
+.contraste .logo,
+.contraste nav a,
+.contraste .tag {
+    color: #fff;
 }
 
-.contraste .card {
-    background: #222;
+.contraste .card,
+.contraste .formulario-container {
+    border-color: #fff;
+}
 
+.contraste #conteudo input,
+.contraste #conteudo select,
+.contraste #conteudo textarea {
+    background: #111;
+    color: white;
     border-color: white;
 }
 
+.contraste #conteudo .botao-principal,
+.contraste #conteudo .botao-link,
+.contraste .botao-menu {
+    background: #ffeb3b;
+    color: #000;
+}
 
-/* ==============================
+/* ==========================
    GUIA DE LEITURA
-============================== */
+========================== */
 
 #guia {
     display: none;
-
     position: fixed;
-
     left: 0;
-
+    top: 0;
     width: 100%;
     height: 5px;
-
     background: #1976d2;
-
     z-index: 900;
-
     pointer-events: none;
 }
 
@@ -413,39 +524,56 @@ section > p {
     display: block;
 }
 
-
-/* ==============================
+/* ==========================
    RODAPÉ
-============================== */
+========================== */
 
 footer {
     padding: 40px;
-
-    text-align: center;
-
     background: #17324d;
-
     color: white;
+    text-align: center;
 }
 
-
-/* ==============================
-   CELULAR
-============================== */
+/* ==========================
+   RESPONSIVIDADE
+========================== */
 
 @media (max-width: 800px) {
 
-    .inicio h1 {
-        font-size: 40px;
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 6%;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .inicio,
+    .secao,
+    .informacao {
+        padding: 60px 6%;
+    }
+
+    #conteudo h1 {
+        font-size: calc(38px * var(--escala-texto));
     }
 
     .cards {
         grid-template-columns: 1fr;
     }
 
-    #painel {
-        width: 100%;
+    .formulario-container {
+        padding: 25px;
     }
-
 }
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 

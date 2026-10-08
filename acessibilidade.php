@@ -1,41 +1,71 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dislexia+</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style/style.css">
+    <title>Dislexia+ | Acessibilidade</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/style.css?v=3">
+
+    <!-- JAVASCRIPT -->
+    <script src="js/script.js?v=3" defer></script>
+
 </head>
 
 <body>
 
-    <!-- MENU -->
+    <!-- ==========================
+         CABEÇALHO
+    ========================== -->
 
-    <header>
+    <header class="cabecalho">
 
-        <h2 class="logo">Dislexia+</h2>
+        <a href="acessibilidade.php" class="logo">
+            Dislexia+
+        </a>
 
-        <nav>
-            <a href="#sobre">Sobre</a>
-            <a href="#recursos">Recursos</a>
-            <a href="painel.php">Painel</a>
+        <nav aria-label="Menu principal">
+
+            <a href="#sobre">
+                Sobre
+            </a>
+
+            <a href="#recursos">
+                Recursos
+            </a>
+
+            <a href="formulario.php">
+                Formulário
+            </a>
+
+            <button
+                type="button"
+                class="botao-menu"
+                onclick="abrirPainel()">
+                ⚙ Acessibilidade
+            </button>
+
         </nav>
 
     </header>
 
-
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ==========================
+         CONTEÚDO PRINCIPAL
+    ========================== -->
 
     <main id="conteudo">
 
         <!-- INÍCIO -->
-
         <section class="inicio">
 
-            <div>
+            <div class="inicio-conteudo">
 
                 <span class="tag">
                     Acessibilidade para todos
@@ -48,127 +78,171 @@
                 </h1>
 
                 <p>
-                    Conheça a dislexia e descubra recursos
-                    que podem tornar a leitura mais
-                    confortável e acessível.
+                    Conheça a dislexia e descubra
+                    recursos que podem tornar a leitura
+                    mais confortável, inclusiva
+                    e acessível.
                 </p>
 
-                <button onclick="abrirPainel()">
-                    ⚙ Acessibilidade
+                <button
+                    type="button"
+                    class="botao-principal"
+                    onclick="abrirPainel()">
+                    ⚙ Personalizar leitura
                 </button>
 
             </div>
 
         </section>
 
+        <!-- ==========================
+             SOBRE
+        ========================== -->
 
-        <!-- SOBRE -->
-
-        <section id="sobre">
+        <section id="sobre" class="secao">
 
             <h2>O que é dislexia?</h2>
 
             <p>
-                A dislexia está relacionada à forma como
-                uma pessoa processa a linguagem escrita.
-                Ela não determina sua inteligência ou
-                capacidade de aprender.
+                A dislexia é uma condição específica
+                de aprendizagem que afeta principalmente
+                habilidades relacionadas à leitura
+                e à escrita.
+            </p>
+
+            <p>
+                Ela não determina a inteligência
+                ou a capacidade de aprender.
+                Com estratégias e recursos adequados,
+                é possível tornar a aprendizagem
+                mais acessível.
             </p>
 
         </section>
 
+        <!-- ==========================
+             RECURSOS
+        ========================== -->
 
-        <!-- RECURSOS -->
+        <section id="recursos" class="secao recursos">
 
-        <section id="recursos">
-
-            <h2>Recursos para auxiliar a leitura</h2>
+            <h2>
+                Recursos para auxiliar a leitura
+            </h2>
 
             <p>
-                Algumas adaptações podem tornar a leitura
-                digital mais confortável.
+                Conheça ferramentas que permitem
+                personalizar a apresentação dos textos
+                conforme suas preferências.
             </p>
-
 
             <div class="cards">
 
-                <div class="card">
+                <!-- CARD 1 -->
+                <article class="card">
 
                     <h3>🔎 Texto ajustável</h3>
 
                     <p>
-                        Permite aumentar ou diminuir
-                        o tamanho das letras.
+                        Aumente ou diminua o tamanho
+                        das letras gradualmente.
                     </p>
 
-                </div>
+                </article>
 
-
-                <div class="card">
+                <!-- CARD 2 -->
+                <article class="card">
 
                     <h3>↔ Espaçamento</h3>
 
                     <p>
-                        Permite aumentar o espaço entre
-                        letras e linhas.
+                        Ajuste o espaço entre letras
+                        e linhas para tornar a leitura
+                        mais confortável.
                     </p>
 
-                </div>
+                </article>
 
-
-                <div class="card">
+                <!-- CARD 3 -->
+                <article class="card">
 
                     <h3>Aa Fonte</h3>
 
                     <p>
-                        Permite utilizar uma fonte
-                        mais simples para leitura.
+                        Utilize uma fonte alternativa
+                        para personalizar a leitura.
                     </p>
 
-                </div>
+                </article>
 
-
-                <div class="card">
+                <!-- CARD 4 -->
+                <article class="card">
 
                     <h3>☀ Fundo confortável</h3>
 
                     <p>
-                        Altera o fundo da página para
-                        uma cor mais confortável.
+                        Altere a tonalidade do fundo
+                        para uma cor mais agradável.
                     </p>
 
-                </div>
+                </article>
 
-
-                <div class="card">
+                <!-- CARD 5 -->
+                <article class="card">
 
                     <h3>━ Guia de leitura</h3>
 
                     <p>
-                        Uma linha acompanha o usuário
-                        durante a leitura.
+                        Utilize uma linha horizontal
+                        que acompanha o movimento
+                        do mouse.
                     </p>
 
-                </div>
+                </article>
 
+                <!-- CARD 6 -->
+                <article class="card">
 
-                <div class="card">
-
-                    <h3>🔊 Texto para voz</h3>
+                    <h3>🔊 Leitura em voz alta</h3>
 
                     <p>
-                        O navegador pode ler o conteúdo
-                        da página em voz alta.
+                        Ouça o conteúdo da página
+                        utilizando os recursos
+                        de voz do navegador.
                     </p>
 
-                </div>
+                </article>
 
             </div>
 
         </section>
 
+        <!-- ==========================
+             FORMULÁRIO
+        ========================== -->
 
-        <!-- FINAL -->
+        <section class="secao chamada-formulario">
+
+            <h2>
+                Quer compartilhar sua experiência?
+            </h2>
+
+            <p>
+                Acesse nosso formulário e compartilhe
+                suas percepções sobre acessibilidade
+                e leitura digital.
+            </p>
+
+            <a href="formulario.php"
+               class="botao-link">
+                Acessar formulário
+            </a>
+
+        </section>
+
+        <!-- ==========================
+             INFORMAÇÃO FINAL
+        ========================== -->
 
         <section class="informacao">
 
@@ -181,7 +255,10 @@
                 para personalizar sua experiência.
             </p>
 
-            <button onclick="abrirPainel()">
+            <button
+                type="button"
+                class="botao-principal"
+                onclick="abrirPainel()">
                 ⚙ Personalizar leitura
             </button>
 
@@ -189,21 +266,18 @@
 
     </main>
 
-
-    <!--
-        O painel.php será colocado
-        dentro desta DIV.
-    -->
+    <!-- ==========================
+         PAINEL DINÂMICO
+    ========================== -->
 
     <div id="areaPainel"></div>
 
-
     <!-- GUIA DE LEITURA -->
+    <div id="guia" aria-hidden="true"></div>
 
-    <div id="guia"></div>
-
-
-    <!-- RODAPÉ -->
+    <!-- ==========================
+         RODAPÉ
+    ========================== -->
 
     <footer>
 
@@ -215,11 +289,5 @@
 
     </footer>
 
-
-    <!-- JAVASCRIPT -->
-
-    <script src="js/script.js"></script>
-
 </body>
-
 </html>
