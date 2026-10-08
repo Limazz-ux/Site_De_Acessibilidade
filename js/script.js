@@ -159,7 +159,7 @@ function lerPagina() {
         new SpeechSynthesisUtterance(texto);
 
 
-    leitura.lang = "pt-BR";
+    leitura.lang = "jpn";
 
 
     speechSynthesis.speak(leitura);
