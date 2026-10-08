@@ -315,19 +315,7 @@ function lerPagina() {
     const leitura = new SpeechSynthesisUtterance(texto);
 
     leitura.lang = "pt-BR";
-    leitura.rate = 0.9;
-    leitura.pitch = 1;
-    leitura.volume = 1;
 
-    const vozes = speechSynthesis.getVoices();
-
-    const vozPortugues = vozes.find(function(voz) {
-        return voz.lang.toLowerCase() === "pt-br";
-    });
-
-    if (vozPortugues) {
-        leitura.voice = vozPortugues;
-    }
 
     speechSynthesis.speak(leitura);
 }
