@@ -1,18 +1,77 @@
+
 <?php
 session_start();
-include("conexao/conexao.php");
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $experiencia = $_POST['experiencia'];
-    $util = $_POST['util'];
-    $sugestoes = $_POST['sugestoes'];
+// CONEXÃO COM O BANCO DE DADOS
+include (conexao/conexao.php);
 
-    $sql = "INSERT INTO formulario(nome, email, experiencia, util, sugestoes) VALUES ('$nome', '$email', '$experiencia', '$util' , '$sugestoes')";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nome = trim($_POST["nome"] ?? "");
+    $email = trim($_POST["email"] ?? "");
+    $experiencia = $_POST["experiencia"] ?? "";
+    $util = $_POST["util"] ?? "";
+    $sugestoes = trim($_POST["sugestoes"] ?? "");
+
+    if (
+        $nome === "" ||
+        !filter_var($email, FILTER_VALIDATE_EMAIL) ||
+        $experiencia === "" ||
+        $util === "" ||
+        mb_strlen($nome) > 50 ||
+        mb_strlen($email) > 50 ||
+        mb_strlen($sugestoes) > 200
+    ) {
+
+        $mensagem = "Verifique os dados preenchidos.";
+        $tipoMensagem = "erro";
+
+    } else {
+
+        $sql = "INSERT INTO formulario
+                (nome, email, experiencia, util, sugestoes)
+                VALUES (?, ?, ?, ?, ?)";
+
+        try {
+
+            $stmt = mysqli_prepare($conn, $sql);
+
+            mysqli_stmt_bind_param(
+                $stmt,
+                "sssss",
+                $nome,
+                $email,
+                $experiencia,
+                $util,
+                $sugestoes
+            );
+
+            if (mysqli_stmt_execute($stmt)) {
+
+                $mensagem = "Formulário enviado com sucesso!";
+                $tipoMensagem = "sucesso";
+
+            } else {
+
+                $mensagem = "Erro ao salvar o formulário.";
+                $tipoMensagem = "erro";
+            }
+
+            mysqli_stmt_close($stmt);
+
+        } catch (mysqli_sql_exception $e) {
+
+            error_log($e->getMessage());
+
+            $mensagem = "Erro ao salvar o formulário.";
+            $tipoMensagem = "erro";
+        }
+    }
 }
 
+mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -94,7 +153,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                      FORMULÁRIO
                 ========================== -->
 
-                <form id="formularioPesquisa" method="POST" action="formulario.php">
+                <form
+                    id="formularioPesquisa"
+                    method="POST"
+                    action="formulario.php">
 
                     <!-- NOME -->
                     <div class="campo">
@@ -107,6 +169,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                             type="text"
                             id="nome"
                             name="nome"
+                            maxlength="50"
                             placeholder="Digite seu nome"
                             autocomplete="name"
                             required>
@@ -124,6 +187,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                             type="email"
                             id="email"
                             name="email"
+                            maxlength="50"
                             placeholder="exemplo@email.com"
                             autocomplete="email"
                             required>
@@ -227,6 +291,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                             id="sugestoes"
                             name="sugestoes"
                             rows="5"
+                            maxlength="200"
                             placeholder="Escreva sua opinião..."></textarea>
 
                     </div>
@@ -239,7 +304,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </button>
 
                     <!-- MENSAGEM -->
-                 
+
+                    <?php if ($mensagem !== ""): ?>
+
+                        <p
+                            class="mensagem <?php echo $tipoMensagem; ?>"
+                            role="status">
+
+                            <?php
+                                echo htmlspecialchars(
+                                    $mensagem,
+                                    ENT_QUOTES,
+                                    "UTF-8"
+                                );
+                            ?>
+
+                        </p>
+
+                    <?php endif; ?>
 
                 </form>
 

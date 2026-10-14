@@ -1,14 +1,22 @@
+
 <?php
+
 $host = "localhost";
 $usuario = "root";
-$senha = "root";
+$senha = "";
 $banco = "site_dislexia";
 
-$conn = mysqli_connect($host, $usuario, $senha, $banco);
+$conn = mysqli_connect(
+    $host,
+    $usuario,
+    $senha,
+    $banco
+);
 
-if(!$conn) {
-    die("Erro ao conectar com o banco de dados");
-}  else {
-    echo "Conexão Realizada com Sucesso!";
+if (!$conn) {
+    die("Falha na conexão: " . mysqli_connect_error());
 }
+
+mysqli_set_charset($conn, "utf8mb4");
+
 ?>
