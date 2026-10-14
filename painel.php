@@ -82,6 +82,13 @@
 
         <button
             type="button"
+            onclick="fonteOpenDyslexic()"
+            aria-label="Ativar ou desativar a fonte OpenDyslexic">
+            Aa Fonte OpenDyslexic
+        </button>
+
+        <button
+            type="button"
             onclick="fundoConfortavel()">
             ☀ Fundo confortável
         </button>

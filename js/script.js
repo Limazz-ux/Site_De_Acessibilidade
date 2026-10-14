@@ -8,6 +8,7 @@ const configuracaoPadrao = {
     letras: false,
     linhas: false,
     fonte: false,
+    openDyslexic: false,
     creme: false,
     contraste: false,
     guia: false
@@ -83,6 +84,11 @@ function aplicarConfiguracoes() {
     document.body.classList.toggle(
         "fonte",
         Boolean(configuracoes.fonte)
+    );
+
+    document.body.classList.toggle(
+        "open-dyslexic",
+        Boolean(configuracoes.openDyslexic)
     );
 
     document.body.classList.toggle(
@@ -225,6 +231,18 @@ function espacamentoLinhas() {
 function mudarFonte() {
 
     configuracoes.fonte = !configuracoes.fonte;
+
+    atualizar();
+}
+
+
+// =====================================
+// FONTE OPENDYSLEXIC
+// =====================================
+
+function fonteOpenDyslexic() {
+
+    configuracoes.openDyslexic = !configuracoes.openDyslexic;
 
     atualizar();
 }

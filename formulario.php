@@ -85,10 +85,10 @@ mysqli_close($conn);
     <title>Formulário | Dislexia+</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style/style.css?v=3">
+    <link rel="stylesheet" href="style/style.css?v=4">
 
     <!-- JAVASCRIPT -->
-    <script src="js/script.js?v=3" defer></script>
+    <script src="js/script.js?v=4" defer></script>
 
 </head>
 
