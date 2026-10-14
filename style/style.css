@@ -323,6 +323,68 @@ nav a:hover {
     font-weight: bold;
 }
 
+#mensagemFormulario.sucesso {
+    color: #1f7a1f;
+}
+
+#mensagemFormulario.erro {
+    color: #b71c1c;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    position: relative;
+    width: min(420px, 100%);
+    padding: 35px 24px 24px;
+    border-radius: 16px;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-conteudo h2 {
+    margin: 0 0 12px;
+    color: #17324d;
+}
+
+.modal-conteudo p {
+    margin: 0 0 20px;
+    line-height: 1.7;
+    color: #263238;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #dfeaf5;
+    color: #17324d;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.modal-botao {
+    margin-top: 0;
+}
+
 /* ==========================
    PAINEL DE ACESSIBILIDADE
 ========================== */

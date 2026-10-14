@@ -417,79 +417,89 @@ document.addEventListener("keydown", function(evento) {
 });
 
 
-// =====================================
-// FORMULÁRIO DEMONSTRATIVO
-// =====================================
+function abrirModalSucesso(mensagem = "Formulário enviado com sucesso!") {
+    const modal = document.getElementById("modalSucesso");
+    const texto = document.getElementById("textoModalSucesso");
 
-function configurarFormulario() {
+    if (!modal || !texto) return;
 
-    const formulario = document.getElementById(
-        "formularioPesquisa"
-    );
+    texto.textContent = mensagem;
+    modal.classList.add("ativo");
+    modal.setAttribute("aria-hidden", "false");
 
-    if (!formulario) return;
-
-    formulario.addEventListener("submit", function(evento) {
-
-        evento.preventDefault();
-
-        const mensagem = document.getElementById(
-            "mensagemFormulario"
-        );
-
-        if (mensagem) {
-            mensagem.textContent =
-                "Formulário validado. O envio ainda não está conectado ao banco de dados.";
-        }
-
-    });
-
+    clearTimeout(window.modalSucessoTimer);
+    window.modalSucessoTimer = setTimeout(function () {
+        fecharModalSucesso();
+    }, 20000);
 }
 
+function fecharModalSucesso() {
+    const modal = document.getElementById("modalSucesso");
+
+    if (!modal) return;
+
+    modal.classList.remove("ativo");
+    modal.setAttribute("aria-hidden", "true");
+}
 
 // =====================================
 // INICIALIZAÇÃO
 // =====================================
 
 document.addEventListener("DOMContentLoaded", function() {
-
     aplicarConfiguracoes();
 
-    configurarFormulario();
+    const formulario = document.getElementById("formularioPesquisa");
+    const mensagem = document.getElementById("mensagemFormulario");
+    const modal = document.getElementById("modalSucesso");
+    const fecharBotao = document.querySelector(".modal-fechar");
 
-});
-
-
-const formulario = document.getElementById("formularioPesquisa");
-const mensagem = document.getElementById("mensagemFormulario");
-
-formulario.addEventListener("submit", async function (event) {
-
-    // Impede o navegador de recarregar a página
-    event.preventDefault();
-
-    const dados = new FormData(formulario);
-
-    try {
-
-        const resposta = await fetch("processar_formulario.php", {
-            method: "POST",
-            body: dados
-        });
-
-        const resultado = await resposta.text();
-
-        mensagem.textContent = resultado;
-
-        // Limpa o formulário após sucesso
-        formulario.reset();
-
-    } catch (erro) {
-
-        mensagem.textContent =
-            "Erro ao enviar o formulário.";
-
-        console.error(erro);
+    if (fecharBotao) {
+        fecharBotao.addEventListener("click", fecharModalSucesso);
     }
 
+    if (modal) {
+        modal.addEventListener("click", function(evento) {
+            if (evento.target === modal) {
+                fecharModalSucesso();
+            }
+        });
+    }
+
+    if (!formulario) {
+        return;
+    }
+
+    formulario.addEventListener("submit", async function(evento) {
+        evento.preventDefault();
+
+        const dados = new FormData(formulario);
+
+        try {
+            const resposta = await fetch("processar_formulario.php", {
+                method: "POST",
+                body: dados
+            });
+
+            const resultado = await resposta.text();
+            const textoResultado = resultado.trim();
+
+            if (mensagem) {
+                mensagem.textContent = textoResultado;
+                mensagem.className = "mensagem " + (textoResultado.toLowerCase().includes("sucesso") ? "sucesso" : "erro");
+            }
+
+            if (resposta.ok && textoResultado.toLowerCase().includes("sucesso")) {
+                formulario.reset();
+                abrirModalSucesso(textoResultado);
+            }
+        } catch (erro) {
+            if (mensagem) {
+                mensagem.textContent = "Erro ao enviar o formulário.";
+                mensagem.className = "mensagem erro";
+            }
+
+            console.error(erro);
+        }
+    });
 });
