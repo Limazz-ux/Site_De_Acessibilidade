@@ -1,3 +1,45 @@
+/* ==========================
+   FONTE OPENDYSLEXIC
+========================== */
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("../fonts/OpenDyslexic-Regular.otf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("../fonts/OpenDyslexic-Bold.otf") format("opentype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("../fonts/OpenDyslexic-Italic.otf") format("opentype");
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("../fonts/OpenDyslexic-Bold-Italic.otf") format("opentype");
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* Aplica a fonte em todo o site quando ativada. */
+body.open-dyslexic,
+body.open-dyslexic * {
+    font-family: "OpenDyslexic", Arial, sans-serif !important;
+}
+
 
 /* ==========================
    CONFIGURAÇÕES GERAIS
